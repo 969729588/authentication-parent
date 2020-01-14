@@ -1,0 +1,74 @@
+info:
+  app:
+    name: authentication-ui-name
+    description: 认证ui-des
+    version: 1.0.0.100
+    #此ui依赖的service的服务名称，用于在@FeignClient中
+    service:
+      name: authentication-service
+      #就是service的server.servlet.context-path，去掉“/”
+      prefix: "authentication-service"
+
+server:
+  port: 9999
+  servlet:
+    context-path: "/authentication-ui"
+
+spring:
+  application:
+    name: authentication-ui
+  profiles:
+    active: dev
+  redis:
+    jedis:
+      pool:
+        #配置连接池属性
+        max-active: 5
+        min-idle: 5
+        max-idle: 5
+        max-wait: 5
+    #配置redis服务器属性
+    database: 1
+    host: 192.168.223.129
+    port: 6379
+    #password: bomc
+    #redis连接超时时间，单位毫秒
+    timeout: 2000
+
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://172.16.1.208:8761/eureka/
+#      defaultZone: http://192.168.1.105:8762/eureka/,http://192.168.243.1:8763/eureka/
+  instance:
+    ip-address: localhost
+
+#为了EurekaServer更灵敏而加的
+#eureka.instance.lease-renewal-interval-in-seconds: 30
+#eureka.instance.lease-expiration-duration-in-seconds: 90
+
+#分布式调度锁
+#scheduled-lock:
+  #是否启用
+  #enabled: false
+  #更新心跳时间间隔，单位s
+#  touch-heartbeat-interval-in-seconds: 15
+  #心跳失效时长，单位s
+  #heartbeat-expiration-duration-in-seconds: 60
+  #分布式同步锁重试获取锁的间隔时间，单位ms，
+#  synchronized-lock-retry-interval-in-milliseconds: 1000
+#  #每一个实例能占有锁的最长时间，单位s
+#  synchronized-lock-hold-duration-in-seconds: 45
+
+
+#多租户相关
+multiple-tenant:
+  tenant: abc
+  weight: 2
+  label-and: aa,bb
+  #label-or: aa,bb,cc
+
+
+
+
