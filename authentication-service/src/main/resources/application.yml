@@ -17,6 +17,47 @@ spring:
     name: authentication-service
   profiles:
     active: dev
+  datasource:
+    druid:
+      #flyway使用这个参数,mysql/oracle
+      db-type: mysql
+
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/authentication_service?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      username: root
+      password: admin123
+
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      #和上面的等价
+      #max-open-prepared-statements:
+      validation-query: SELECT 1 FROM DUAL
+      #validation-query-timeout:
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #max-evictable-idle-time-millis:
+      #配置多个英文逗号分隔
+      #filters:
+
+      #多数据源
+      one:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/authentication_service_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+        username: root
+        password: admin123
+      two:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/authentication_service_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+        username: root
+        password: admin123
+
   redis:
     jedis:
       pool:
@@ -45,8 +86,8 @@ eureka:
     #instance-id: xxx
 
 #为了EurekaServer更灵敏而加的
-eureka.instance.lease-renewal-interval-in-seconds: 4
-eureka.instance.lease-expiration-duration-in-seconds: 7
+#eureka.instance.lease-renewal-interval-in-seconds: 4
+#eureka.instance.lease-expiration-duration-in-seconds: 7
 
 #multiple-tenant:
 #  tenant: abc
@@ -65,7 +106,8 @@ eureka.instance.lease-expiration-duration-in-seconds: 7
 #  label-and: aa,bb
 
 multiple-tenant:
-  tenant: def
   weight: 9
   label-and: aa,bb
   label-or: dd,ee,ff
+
+

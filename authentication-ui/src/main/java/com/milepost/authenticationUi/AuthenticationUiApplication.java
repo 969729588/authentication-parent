@@ -29,7 +29,6 @@ import java.util.List;
 @EnableFeignClients
 @SpringBootApplication
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"com.milepost.authenticationUi", "com.milepost.core"})
 public class AuthenticationUiApplication extends MilepostUiApplication{
 
 	public static void main(String[] args) {

@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"com.milepost.authenticationService", "com.milepost.core"})
 public class AuthenticationServiceApplication extends MilepostServiceApplication {
 
 	public static void main(String[] args) {
