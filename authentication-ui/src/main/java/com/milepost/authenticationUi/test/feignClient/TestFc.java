@@ -1,6 +1,7 @@
 package com.milepost.authenticationUi.test.feignClient;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TestFc {
 
     @RequestMapping("${info.app.service.prefix}/test/test3")
-    String test3(@RequestParam("param") String param);
+    String test3(@RequestHeader(value = "Authorization") String token, @RequestParam("param") String param);
 
 }

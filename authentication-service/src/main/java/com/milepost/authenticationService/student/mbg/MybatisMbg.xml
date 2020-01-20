@@ -25,6 +25,8 @@
 				userId="root"
 				password="admin123">
 			<property name="remarksReporting" value="true"/>
+			<!--设置为 true 可以获取 tables 信息, 解决生成文件缺少 xxxByPrimaryKey 的问题 -->
+			<property name="useInformationSchema" value="true"/>
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false"/>

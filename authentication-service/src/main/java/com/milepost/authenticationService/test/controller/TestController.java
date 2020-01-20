@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
+
 /**
  * Created by Ruifu Hua on 2020/1/8.
  */
@@ -17,7 +19,9 @@ public class TestController {
 
     @ResponseBody
     @RequestMapping("/test3")
-    public String test3(@RequestParam("param") String param){
+    public String test3(@RequestParam("param") String param, Principal principal){
+        System.out.println(principal);
+        System.out.println(principal.getName());
         System.out.println("收到参数：" + param);
         return "收到参数：" + param;
     }

@@ -34,7 +34,6 @@ public class AuthenticationUiApplication extends MilepostUiApplication{
 	public static void main(String[] args) {
 //		SpringApplication.run(AuthenticationUiApplication.class, args);
 		run(AuthenticationUiApplication.class, args);
-//		run(new Class[]{AuthenticationUiApplication.class}, args);
 	}
 
 

@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.security.Principal;
 
 /**
  * Created by Ruifu Hua on 2019/12/24.
@@ -39,20 +41,20 @@ public class TestController {
     private TestFc testFc;
 
     /**
-     * https://192.168.223.1:9999/authentication-ui/test/test3?param=123
+     * https://192.168.223.1:9990/authentication-ui/test/test3?param=123
      * @param param
      * @return
      */
     @ResponseBody
     @RequestMapping("/test3")
-    public String test3(@RequestParam("param") String param){
+    public String test3(@RequestHeader(value = "Authorization") String token, @RequestParam("param") String param){
         System.out.println(param);
-        return testFc.test3(param);
+        return testFc.test3(token, param);
     }
 
     /**
      * http://localhost:9998/test/test2?key=test.aaa
-     * http://localhost:9998/test/test2?key=eureka.instance.hostname
+     * https://localhost:9990/authentication-ui/test/test2?key=eureka.instance.ip-address
      *
      * @param key
      * @return
@@ -79,6 +81,32 @@ public class TestController {
         System.out.println("TestController.test1--2" + ", flag="+flag);
         return result;
     }
+
+    /**
+     * https://localhost:9990/authentication-ui/test/test0?flag=111
+     * @param flag
+     * @return
+     * @throws InterruptedException
+     */
+    @ResponseBody
+    @RequestMapping("/test0")
+    public String test0(@RequestParam("flag") String flag) throws InterruptedException {
+        return flag;
+    }
+
+    /**
+     * https://localhost:9990/authentication-ui/test/test0?flag=111
+     * @return
+     * @throws InterruptedException
+     */
+    @ResponseBody
+    @RequestMapping("/test4")
+    public String test0(Principal principal) throws InterruptedException {
+        System.out.println(principal);
+        return principal.getName();
+    }
+
+
 
 
 }

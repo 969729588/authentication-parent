@@ -10,7 +10,7 @@ info:
       prefix: "authentication-service"
 
 server:
-  port: 9999
+  port: 9990
   servlet:
     context-path: "/authentication-ui"
 
