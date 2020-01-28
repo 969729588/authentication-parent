@@ -7,11 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.security.Principal;
@@ -47,9 +46,9 @@ public class TestController {
      */
     @ResponseBody
     @RequestMapping("/test3")
-    public String test3(@RequestHeader(value = "Authorization") String token, @RequestParam("param") String param){
+    public String test3(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
         System.out.println(param);
-        return testFc.test3(token, param);
+        return testFc.test3(/*token,*/ param);
     }
 
     /**
@@ -104,6 +103,20 @@ public class TestController {
     public String test0(Principal principal) throws InterruptedException {
         System.out.println(principal);
         return principal.getName();
+    }
+
+    @GetMapping("/test5")
+    public OAuth2Authentication getPrinciple(OAuth2Authentication oAuth2Authentication, Principal principal,
+                                             Authentication authentication){
+
+        logger.info(oAuth2Authentication.getUserAuthentication().getAuthorities().toString());
+        logger.info(oAuth2Authentication.toString());
+        logger.info("principal.toString()"+principal.toString());
+        logger.info("principal.getName()"+principal.getName());
+        logger.info("authentication:"+authentication.getAuthorities().toString());
+
+        return oAuth2Authentication;
+
     }
 
 

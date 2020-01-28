@@ -20,6 +20,7 @@
     <modules>
         <module>authentication-ui</module>
         <module>authentication-service</module>
+        <module>other-service</module>
     </modules>
 
 </project>
