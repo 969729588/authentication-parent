@@ -24,6 +24,11 @@
 			<groupId>com.milepost</groupId>
 			<artifactId>milepost-ui</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.milepost</groupId>
+			<artifactId>authentication-api</artifactId>
+			<version>1.0.0.100</version>
+		</dependency>
 	</dependencies>
 
 	<build>

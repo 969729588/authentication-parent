@@ -8,7 +8,9 @@ info:
       name: authentication-service
       #就是service的server.servlet.context-path，去掉“/”
       prefix: "authentication-service"
-
+    auth-service:
+      name: milepost-auth
+      prefix: "milepost-auth"
 server:
   port: 9990
   servlet:
@@ -38,9 +40,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://192.168.1.105:8761/eureka/
-      defaultZone: http://172.16.1.208:8761/eureka/
-#      defaultZone: http://192.168.1.105:8762/eureka/,http://192.168.243.1:8763/eureka/
+      defaultZone: http://192.168.1.105:8761/eureka/
+      #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: localhost
 
@@ -64,7 +65,7 @@ eureka:
 
 #多租户相关
 multiple-tenant:
-  tenant: abc
+  tenant: tenant1
   weight: 2
   label-and: aa,bb
   #label-or: aa,bb,cc

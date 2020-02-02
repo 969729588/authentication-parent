@@ -35,9 +35,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://192.168.1.105:8761/eureka/
-      defaultZone: http://172.16.1.208:8761/eureka/
-      #defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://192.168.1.105:8761/eureka/
+      #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: 192.168.223.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
@@ -64,7 +63,7 @@ eureka:
 #  label-and: aa,bb
 
 multiple-tenant:
-  tenant: abc
+  tenant: tenant1
   weight: 9
   label-and: aa,bb
   label-or: dd,ee,ff

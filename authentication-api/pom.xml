@@ -11,17 +11,16 @@
         <relativePath/>
     </parent>
 
-    <artifactId>authentication-parent</artifactId>
-    <version>1.0.0.100</version>
-    <packaging>pom</packaging>
-    <name>authentication-parent</name>
-    <description>认证父工程</description>
+    <artifactId>authentication-api</artifactId>
+    <version>1.0.0.100</version><!--1.0.0是应用版本，100是框架版本-->
+    <name>authentication-api</name>
+    <description>authentication-api</description>
 
-    <modules>
-        <module>authentication-ui</module>
-        <module>authentication-service</module>
-        <module>authentication-api</module>
-        <module>other-service</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.milepost</groupId>
+            <artifactId>milepost-api</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

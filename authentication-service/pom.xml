@@ -30,6 +30,12 @@
 			<artifactId>milepost-mybatis-generator</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.milepost</groupId>
+			<artifactId>authentication-api</artifactId>
+			<version>1.0.0.100</version>
+		</dependency>
 	</dependencies>
 
 	<build>
