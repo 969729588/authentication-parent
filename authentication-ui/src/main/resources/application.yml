@@ -1,7 +1,8 @@
 info:
   app:
     name: authentication-ui-name
-    description: 认证ui-des
+    #description: 认证ui-des
+    description: ENC(VQvR3ACYqLL9llFIsPEqyEZMFcswAReTqKpDfWiJ16I=)
     version: 1.0.0.100
     #此ui依赖的service的服务名称，用于在@FeignClient中
     service:
@@ -69,7 +70,5 @@ multiple-tenant:
   weight: 2
   label-and: aa,bb
   #label-or: aa,bb,cc
-
-
 
 
