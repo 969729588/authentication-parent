@@ -37,6 +37,8 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
+  activemq:
+    broker-url: tcp://192.168.223.129:61616
 
 eureka:
   client:
@@ -70,5 +72,6 @@ multiple-tenant:
   weight: 2
   label-and: aa,bb
   #label-or: aa,bb,cc
+
 
 
