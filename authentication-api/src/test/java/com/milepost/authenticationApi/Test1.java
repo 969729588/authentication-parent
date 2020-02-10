@@ -1,6 +1,5 @@
 package com.milepost.authenticationApi;
 
-import com.milepost.api.util.EncryptionUtil;
 import org.apache.commons.lang.time.DateUtils;
 import org.junit.Test;
 

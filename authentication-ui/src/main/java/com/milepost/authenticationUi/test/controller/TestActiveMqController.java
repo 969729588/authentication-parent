@@ -3,7 +3,6 @@ package com.milepost.authenticationUi.test.controller;
 import com.milepost.core.mq.ActiveMqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.jms.annotation.JmsListeners;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
