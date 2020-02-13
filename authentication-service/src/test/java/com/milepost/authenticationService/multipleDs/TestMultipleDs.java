@@ -65,4 +65,16 @@ public class TestMultipleDs extends BaseTest<AuthenticationServiceApplication> {
 
         return student;
     }
+
+    /**
+     * 一定要在调用service方法之前设置数据源，service方法内设置无效。
+     */
+    @Test
+    public void testMultiDataSourceAndTransactional(){
+        Student student = new Student();
+        student.setId("11");
+        student.setRemark("03");
+        DataSourceContextHolder.setDataSource("one");
+        studentService.testMultiDataSourceAndTransactional(student);
+    }
 }
