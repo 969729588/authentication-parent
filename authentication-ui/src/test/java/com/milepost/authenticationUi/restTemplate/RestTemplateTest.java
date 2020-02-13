@@ -3,14 +3,13 @@ package com.milepost.authenticationUi.restTemplate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.milepost.api.vo.response.Response;
+import com.milepost.authenticationUi.AuthenticationUiApplication;
+import com.milepost.test.BaseTest;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -29,14 +28,16 @@ import java.util.Map;
 /**
  * Created by Ruifu Hua on 2020/2/9.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(value = {"spring.main.allow-bean-definition-overriding=true",
-})
-public class RestTemplateTest {
-    @Autowired
+public class RestTemplateTest extends BaseTest<AuthenticationUiApplication>{
+
     private RestTemplate restTemplate;
 
     private String BASE_URL = "http://192.168.1.104:8080/restServer";
+
+    @Before
+    public void init(){
+        restTemplate = getBean(RestTemplate.class);
+    }
 
     /**
      * 显示响应头

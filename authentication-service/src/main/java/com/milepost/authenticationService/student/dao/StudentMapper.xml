@@ -240,7 +240,8 @@
     CLASSES_ID = #{classesId,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+  <!--禁用缓存，否则测试多数据源时候效果不明显-->
+  <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache" />-->
 
   <!-- 这里不能设置参数类型 parameterType="java.lang.String" ，否则会报错 -->
   <select id="selectByClassesId" resultMap="BaseResultMap">

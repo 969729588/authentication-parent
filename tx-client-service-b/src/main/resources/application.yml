@@ -1,0 +1,102 @@
+info:
+  app:
+    name: tx-client-service-b-name
+    description: tx-client-service-b-des
+    version: 1.0.0.100
+
+server:
+  port: 9981
+  servlet:
+    context-path: "/tx-client-service-b"
+
+spring:
+  application:
+    name: tx-client-service-b
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      #flyway使用这个参数,mysql/oracle
+      db-type: mysql
+
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/tx-client?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      username: root
+      #password: admin123
+      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      #和上面的等价
+      #max-open-prepared-statements:
+      validation-query: SELECT 1 FROM DUAL
+      #validation-query-timeout:
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #max-evictable-idle-time-millis:
+      #配置多个英文逗号分隔
+      #filters:
+  redis:
+    jedis:
+      pool:
+        #配置连接池属性
+        max-active: 20
+        min-idle: 10
+        max-idle: 20
+        max-wait: 2000
+    #配置redis服务器属性
+    database: 1
+    host: 192.168.223.129
+    port: 6379
+    #password: bomc
+    #redis连接超时时间，单位毫秒
+    timeout: 2000
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.105:8761/eureka/
+      #defaultZone: http://172.16.1.208:8761/eureka/
+  instance:
+    ip-address: 127.0.0.1
+    #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+    #instance-id: xxx
+
+#为了EurekaServer更灵敏而加的
+#eureka.instance.lease-renewal-interval-in-seconds: 4
+#eureka.instance.lease-expiration-duration-in-seconds: 7
+
+#multiple-tenant:
+#  tenant: abc
+#  weight: 1
+#  label-and: aa,bb
+#  label-or: aa
+
+#multiple-tenant:
+#  tenant: abc
+#  weight: 9
+#  label-and: aa,bb
+
+#multiple-tenant:
+#  tenant: abc
+#  weight: 0
+#  label-and: aa,bb
+
+multiple-tenant:
+  tenant: tenant1
+  weight: 9
+  label-and: aa,bb
+  label-or: dd,ee,ff
+
+
+

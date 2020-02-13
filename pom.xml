@@ -22,6 +22,9 @@
         <module>authentication-service</module>
         <module>authentication-api</module>
         <module>other-service</module>
+        <module>tx-client-service-a</module>
+        <module>tx-client-service-b</module>
+        <module>tx-client-service-c</module>
     </modules>
 
 </project>
