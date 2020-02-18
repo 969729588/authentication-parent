@@ -43,4 +43,12 @@ public class PersonService extends BaseService<Person, PersonExample>{
 
         int i = 1/0;
     }
+
+    public void test2(String param) {
+        System.out.println("收到参数：" + param);
+        Person person = new Person();
+        person.setId(DataUUIDUtil.randomUUID());
+        person.setFirstName("111");
+        personMapper.insert(person);
+    }
 }

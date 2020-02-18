@@ -58,16 +58,12 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
-  cloud:
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://192.168.1.105:8761/eureka/
-      #defaultZone: http://172.16.1.208:8761/eureka/
+    service-url:
+      default-zone: http://192.168.1.105:8761/eureka/
+      #default-zone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: 127.0.0.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
@@ -101,12 +97,15 @@ multiple-tenant:
 
 
 
-#
+
+# 使用yml配置seata有一下两个bug
+# 1、undo相关配置不生效（估计seata.client.rm.lock相关属性也有类似问题），解决：我们不更改这些配置就可以了，
+# 2、service.disable-global-transaction不生效，解决：在类路径下放一个file.conf，里面只配置service.disable-global-transaction。
 #
 #seata:
 #  enabled: true
-#  application-id: tx-client-service-a
-#  tx-service-group: tx-client-service-a-seata-service-group # 事务群组（可以每个应用独立取名，也可以使用相同的名字）
+#  #application-id: tx-client-service-a
+#  tx-service-group: default # 事务群组（可以每个应用独立取名，也可以使用相同的名字）
 #  client:
 #    rm-report-success-enable: true
 #    # 自动刷新缓存中的表结构（默认false）
@@ -143,7 +142,7 @@ multiple-tenant:
 #        datasource-autoproxy: true
 #  service:
 #    # TC 集群（必须与seata-server保持一致）
-#    vgroup-mapping: default
+#    vgroup-mapping: seata-server
 #    # 降级开关
 #    enable-degrade: false
 #    # 禁用全局事务（默认false）
@@ -178,14 +177,19 @@ multiple-tenant:
 #    # the client batch send request enable
 #    enable-client-batch-send-request: true # 客户端事务消息请求是否批量合并发送（默认true）
 #  registry:
-#    file:
-#      name: file.conf
 #    type: eureka
 #    eureka:
-#      service-url: http://192.168.1.105:8761/eureka
-#      application: default
-#      weight: 1
-#  config:
-#    file:
-#      name: file.conf
-#    type: file
+#      service-url: ${eureka.client.service-url.default-zone}
+##      application: default
+##      weight: 1
+##  config:
+##    file:
+##      name: file.conf
+##    type: file
+
+
+
+
+#
+#dist-transaction:
+#  enabled: true

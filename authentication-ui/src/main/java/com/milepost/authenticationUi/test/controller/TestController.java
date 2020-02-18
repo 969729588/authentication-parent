@@ -121,7 +121,22 @@ public class TestController {
 
     }
 
-
-
-
+    /**
+     * 测试时候需要给feignclient设置超时时间，否则超时后会自动重试，影响测试
+     *
+     * feign:
+        client:
+            config:
+                default:
+                    readTimeout: 600000
+                    connectTimeout: 600000
+     * @param param
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/test6")
+    public String test6(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
+        System.out.println("收到参数：" + param);
+        return testFc.test5(/*token,*/ param);
+    }
 }

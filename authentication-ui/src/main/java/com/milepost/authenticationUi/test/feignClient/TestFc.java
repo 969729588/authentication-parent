@@ -13,4 +13,7 @@ public interface TestFc {
     @RequestMapping("${info.app.service.prefix}/test/test3")
     String test3(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
 
+    @RequestMapping("${info.app.service.prefix}/test/test5")
+    String test5(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
+
 }

@@ -1,5 +1,6 @@
 package com.milepost.authenticationService.test.controller;
 
+import com.milepost.authenticationService.person.service.PersonService;
 import com.milepost.authenticationService.student.entity.Student;
 import com.milepost.authenticationService.student.service.StudentService;
 import com.milepost.authenticationService.test.feignClient.TestFc;
@@ -31,6 +32,9 @@ public class TestController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private PersonService personService;
+
     @ResponseBody
     @RequestMapping("/test4")
     public String test4(@RequestParam("dsKey") String dsKey){
@@ -53,10 +57,17 @@ public class TestController {
         System.out.println(principal.getName());
         System.out.println("收到参数：" + param);
 
-        testFc.test3(param);
+        //testFc.test3(param);
 
 
         return "收到参数：" + param;
     }
 
+    @ResponseBody
+    @RequestMapping("/test5")
+    public String test5(@RequestParam("param") String param, Principal principal){
+
+        personService.test1(param);
+        return "收到参数：" + param;
+    }
 }

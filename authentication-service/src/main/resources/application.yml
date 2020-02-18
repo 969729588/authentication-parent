@@ -78,9 +78,9 @@ spring:
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://192.168.1.105:8761/eureka/
-      #defaultZone: http://172.16.1.208:8761/eureka/
+    service-url:
+      default-zone: http://192.168.1.105:8761/eureka/
+      #default-zone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: 192.168.223.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
@@ -112,6 +112,15 @@ multiple-tenant:
   label-and: aa,bb
   label-or: dd,ee,ff
 
+#dist-transaction:
+#  enabled: true
+
+#feign:
+#  client:
+#    config:
+#      default:
+#        readTimeout: 600000
+#        connectTimeout: 600000
 
 
 

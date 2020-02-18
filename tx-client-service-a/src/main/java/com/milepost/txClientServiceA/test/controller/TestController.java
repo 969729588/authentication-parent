@@ -19,7 +19,7 @@ import java.security.Principal;
  * Created by Ruifu Hua on 2020/1/8.
  */
 @Controller
-@RequestMapping("/testLcn")
+@RequestMapping("/testSeata")
 public class TestController {
 
     private Logger logger = LoggerFactory.getLogger(TestController.class);
@@ -36,6 +36,14 @@ public class TestController {
     public String test1(@RequestParam("param") String param, Principal principal){
 
         personService.test1(param);
+        return "收到参数：" + param;
+    }
+
+    @ResponseBody
+    @RequestMapping("/test2")
+    public String test2(@RequestParam("param") String param, Principal principal){
+
+        personService.test2(param);
         return "收到参数：" + param;
     }
 

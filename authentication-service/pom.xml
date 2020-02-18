@@ -30,6 +30,11 @@
 
 		<dependency>
 			<groupId>com.milepost</groupId>
+			<artifactId>milepost-dist-transaction</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.milepost</groupId>
 			<artifactId>milepost-mybatis-generator</artifactId>
 			<scope>test</scope>
 		</dependency>

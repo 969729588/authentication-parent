@@ -41,9 +41,9 @@ spring:
     broker-url: tcp://192.168.223.129:61616
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://192.168.1.105:8761/eureka/
-      #defaultZone: http://172.16.1.208:8761/eureka/
+    service-url:
+      default-zone: http://192.168.1.105:8761/eureka/
+      #default-zone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: localhost
 
@@ -71,4 +71,13 @@ multiple-tenant:
   weight: 2
   label-and: aa,bb
   #label-or: aa,bb,cc
+
+#feign:
+#  client:
+#    config:
+#      default:
+#        readTimeout: 600000
+#        connectTimeout: 600000
+
+
 
