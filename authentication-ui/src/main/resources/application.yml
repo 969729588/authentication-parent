@@ -42,10 +42,10 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://192.168.1.105:8761/eureka/
-      #default-zone: http://172.16.1.208:8761/eureka/
+      #defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://192.168.223.129:8761/eureka/
   instance:
-    ip-address: localhost
+    ip-address: 192.168.223.1
 
 #为了EurekaServer更灵敏而加的
 #eureka.instance.lease-renewal-interval-in-seconds: 30
@@ -79,5 +79,9 @@ multiple-tenant:
 #        readTimeout: 600000
 #        connectTimeout: 600000
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'loggers'
 

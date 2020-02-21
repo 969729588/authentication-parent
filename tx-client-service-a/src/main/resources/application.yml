@@ -62,8 +62,8 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://192.168.1.105:8761/eureka/
-      #default-zone: http://172.16.1.208:8761/eureka/
+      defaultZone: http://192.168.1.105:8761/eureka/
+      #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
     ip-address: 127.0.0.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
@@ -179,7 +179,7 @@ multiple-tenant:
 #  registry:
 #    type: eureka
 #    eureka:
-#      service-url: ${eureka.client.service-url.default-zone}
+#      service-url: ${eureka.client.service-url.defaultZone}
 ##      application: default
 ##      weight: 1
 ##  config:

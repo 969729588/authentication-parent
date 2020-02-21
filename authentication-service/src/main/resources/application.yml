@@ -24,7 +24,7 @@ spring:
       db-type: mysql
 
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.223.129:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
       username: root
       #password: admin123
       password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
@@ -79,8 +79,8 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://192.168.1.105:8761/eureka/
-      #default-zone: http://172.16.1.208:8761/eureka/
+      #defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://192.168.223.129:8761/eureka/
   instance:
     ip-address: 192.168.223.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
