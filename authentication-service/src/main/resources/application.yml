@@ -51,12 +51,12 @@ spring:
       #多数据源
       one:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+        url: jdbc:mysql://192.168.223.129:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
         username: root
         password: admin123
       two:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/milepost_auth_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+        url: jdbc:mysql://192.168.223.129:3306/milepost_auth_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
         username: root
         password: admin123
 
