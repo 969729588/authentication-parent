@@ -1,11 +1,11 @@
-package com.milepost.authenticationService.person.entity;
+package com.milepost.authenticationApi.entity.person;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class Person implements Serializable {
     /**
-     * person.ID
+     * milepost_auth..person.ID
      * 
      *
      * @mbggenerated
@@ -13,7 +13,7 @@ public class Person implements Serializable {
     private String id;
 
     /**
-     * person.FIRST_NAME
+     * milepost_auth..person.FIRST_NAME
      * 
      *
      * @mbggenerated
@@ -21,7 +21,7 @@ public class Person implements Serializable {
     private String firstName;
 
     /**
-     * person.LAST_NAME
+     * milepost_auth..person.LAST_NAME
      * 
      *
      * @mbggenerated
@@ -29,7 +29,7 @@ public class Person implements Serializable {
     private String lastName;
 
     /**
-     * person.BIRTH
+     * milepost_auth..person.BIRTH
      * 
      *
      * @mbggenerated
@@ -37,7 +37,7 @@ public class Person implements Serializable {
     private Date birth;
 
     /**
-     * person.SCORE
+     * milepost_auth..person.SCORE
      * 
      *
      * @mbggenerated
@@ -45,7 +45,7 @@ public class Person implements Serializable {
     private Float score;
 
     /**
-     * person.REMARK
+     * milepost_auth..person.REMARK
      * 
      *
      * @mbggenerated

@@ -1,9 +1,9 @@
 package com.milepost.authenticationService.person.service;
 
 import com.milepost.api.util.DataUUIDUtil;
+import com.milepost.authenticationApi.entity.person.Person;
+import com.milepost.authenticationApi.entity.person.PersonExample;
 import com.milepost.authenticationService.person.dao.PersonMapper;
-import com.milepost.authenticationService.person.entity.Person;
-import com.milepost.authenticationService.person.entity.PersonExample;
 import com.milepost.authenticationService.test.feignClient.TxClientServiceAFc;
 import com.milepost.service.mybatis.service.BaseService;
 import io.seata.spring.annotation.GlobalTransactional;

@@ -4,14 +4,15 @@ import com.github.pagehelper.PageInfo;
 import com.milepost.api.dto.request.PageParameter;
 import com.milepost.api.vo.response.Response;
 import com.milepost.api.vo.response.ResponseHelper;
-import com.milepost.authenticationService.person.entity.Person;
-import com.milepost.authenticationService.person.entity.PersonExample;
+import com.milepost.authenticationApi.entity.person.Person;
+import com.milepost.authenticationApi.entity.person.PersonExample;
 import com.milepost.authenticationService.person.service.PersonService;
 import com.milepost.authenticationService.student.entity.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
@@ -37,6 +38,24 @@ public class PersonController {
             PageInfo<Person> pageInfo = personService.selectByExampleForPageInfo(personExample, pageParameter);
             response = ResponseHelper.createSuccessResponse(pageInfo);
         } catch (Exception e) {
+            response = ResponseHelper.createExceptionResponse(e);
+            logger.error(e.getMessage(), e);
+        }
+        return response;
+    }
+
+    @PutMapping
+    public Response<Person> update(Person record) {
+        Response<Person> response = null;
+        try{
+            int effectRow = personService.updateByPrimaryKey(record);
+            if(effectRow > 0){
+                response = ResponseHelper.createSuccessResponse(record);
+            }else {
+                response = ResponseHelper.createFailResponse();
+            }
+        } catch (Exception e) {
+            response = ResponseHelper.createExceptionResponse(e);
             logger.error(e.getMessage(), e);
         }
         return response;

@@ -16,7 +16,7 @@
 			<property name="suppressDate" value="true"/>
 			<property name="suppressAllComments" value="false"/>
 		</commentGenerator>
-		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/authentication_service?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8&amp;serverTimezone=GMT%2B8" userId="root" password="admin123">
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://192.168.223.129:3306/milepost_auth?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8&amp;serverTimezone=GMT%2B8" userId="root" password="admin123">
 			<property name="remarksReporting" value="true"/>
 			<!--设置为 true 可以获取 tables 信息, 解决生成文件缺少 xxxByPrimaryKey 的问题 -->
 			<property name="useInformationSchema" value="true"/>
@@ -24,14 +24,19 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false"/>
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="com.milepost.authenticationService.person.entity" targetProject=".\authentication-service\src\main\java">
+		<!--entity-->
+		<javaModelGenerator targetPackage="com.milepost.authenticationApi.entity.person" targetProject="./authentication-api/src/main/java">
 			<property name="enableSubPackages" value="true"/>
 			<property name="trimStrings" value="true"/>
 		</javaModelGenerator>
-		<sqlMapGenerator targetPackage="com.milepost.authenticationService.person.dao" targetProject=".\authentication-service\src\main\java">
+		<!--mapper映射文件-->
+		<sqlMapGenerator targetPackage="com.milepost.authenticationService.person.dao" targetProject="./authentication-service/src/main/java">
 			<property name="enableSubPackages" value="true"/>
 		</sqlMapGenerator>
-		<table tableName="person" domainObjectName="Person">
+		<table catalog="milepost_auth" tableName="person" domainObjectName="Person">
+			<!--catalog指定数据库名称-->
+			<!--ignoreQualifiersAtRuntime=true，禁止生成与数据库同名的文件夹-->
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
 			<!-- jdbcType去org.apache.ibatis.type.JdbcType中找 -->
 			<!-- 注意，所有数字类的字段都要用其包装类，因为基本数据类型没有null值， -->
 			<!-- oracle需要如下三个覆盖 -->
@@ -45,7 +50,7 @@
 			<!-- <columnOverride column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR"/> -->
 			<!-- mysql只需要如以下个覆盖 -->
 			<!-- mysql数据库是text、mediumtext、longtext类型，相当于oracle的clob -->
-			<columnOverride column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR"/>
+			<!--<columnOverride column="REMARK" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
 		</table>
 	</context>
 </generatorConfiguration>
