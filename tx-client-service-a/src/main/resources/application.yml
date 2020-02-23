@@ -20,10 +20,9 @@ spring:
       db-type: mysql
 
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/tx-client?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.223.129:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
       username: root
-      #password: admin123
-      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+      password: admin123
 
       initial-size: 5
       max-active: 20
@@ -58,14 +57,16 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
+  flyway:
+    enabled: false
 
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.1.105:8761/eureka/
+      defaultZone: http://192.168.223.129:8761/eureka/
       #defaultZone: http://172.16.1.208:8761/eureka/
   instance:
-    ip-address: 127.0.0.1
+    ip-address: 192.168.223.1
     #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
     #instance-id: xxx
 
@@ -191,5 +192,5 @@ multiple-tenant:
 
 
 #
-#dist-transaction:
-#  enabled: true
+dist-transaction:
+  enabled: true

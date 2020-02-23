@@ -76,6 +76,9 @@ spring:
     #redis连接超时时间，单位毫秒
     timeout: 2000
 
+  flyway:
+    enabled: true
+
 eureka:
   client:
     service-url:
@@ -112,15 +115,19 @@ multiple-tenant:
   label-and: aa,bb
   label-or: dd,ee,ff
 
-#dist-transaction:
-#  enabled: true
+dist-transaction:
+  enabled: true
+  tx-service-group: default1
+  tx-server-app-name: tx-server
 
-#feign:
-#  client:
-#    config:
-#      default:
-#        readTimeout: 600000
-#        connectTimeout: 600000
+
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 600000
+        connectTimeout: 600000
+
 
 
 
