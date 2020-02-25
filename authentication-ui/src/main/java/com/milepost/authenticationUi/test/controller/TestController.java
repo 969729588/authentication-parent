@@ -1,6 +1,8 @@
 package com.milepost.authenticationUi.test.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.milepost.authenticationUi.test.event.CustomEvent;
+import com.milepost.authenticationUi.test.event.EventSource;
 import com.milepost.authenticationUi.test.feignClient.TestFc;
 import com.milepost.authenticationUi.test.service.TestService;
 import io.micrometer.core.instrument.util.JsonUtils;
@@ -8,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -26,6 +31,12 @@ public class TestController {
 
     private Logger logger = LoggerFactory.getLogger(TestController.class);
 
+    /**
+     * 发布事件
+     */
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
+
     @Autowired
     private TestService testService;
 
@@ -40,6 +51,13 @@ public class TestController {
 
     @Autowired
     private TestFc testFc;
+
+    @EventListener
+    public void applicationReady(Object object) {
+        System.out.println(object.toString());//org.springframework.cloud.client.discovery.event.HeartbeatEvent
+
+        System.out.println("------------");
+    }
 
     /**
      * https://192.168.223.1:9990/authentication-ui/test/test3?param=123
@@ -140,5 +158,12 @@ public class TestController {
         return testFc.test5(/*token,*/ param);
     }
 
+
+    @GetMapping("testPublishEvent")
+    public String testPublishEvent(){
+        CustomEvent customEvent = new CustomEvent(new EventSource("zhangsan", "123456"));
+        applicationEventPublisher.publishEvent(customEvent);
+        return "testPublishEvent";
+    }
 
 }

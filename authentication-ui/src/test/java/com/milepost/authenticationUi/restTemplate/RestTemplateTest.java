@@ -56,6 +56,7 @@ public class RestTemplateTest extends BaseTest<AuthenticationUiApplication>{
     }
 
     /**
+     * 打印map
      * @param map
      */
     private void printMap(Map<String, Object> map) {
@@ -71,7 +72,7 @@ public class RestTemplateTest extends BaseTest<AuthenticationUiApplication>{
      */
     @Test
     public void getForEntity() throws IOException {
-        //1.没有参数的，或者所直接在url上拼接参数的
+        //1.没有参数的，或者直接在url上拼接参数的
 //        ResponseEntity<String> responseEntity = restTemplate.getForEntity(BASE_URL + "/23", String.class);
         //2.不定个数参数，通过位置匹配，url中的{}与uriVariables按照位置对应，下面的方法会生成"http://192.168.1.104:8080/student/23/aa"
 //        ResponseEntity<String> responseEntity = restTemplate.getForEntity(BASE_URL + "/{p1}/{p2}", String.class, 23,"aa");
