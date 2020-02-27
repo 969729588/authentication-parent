@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,9 +36,14 @@ public class TestController {
     @Autowired
     private PersonService personService;
 
+    /**
+     * 测试动态数据源，
+     * @param dsKey 传入one、two。
+     * @return
+     */
     @ResponseBody
-    @RequestMapping("/test4")
-    public String test4(@RequestParam("dsKey") String dsKey){
+    @GetMapping("/testDynamicDs")
+    public String testDynamicDs(@RequestParam("dsKey") String dsKey){
 
         DataSourceContextHolder.setDataSource(dsKey);
         Map<String, Object> paramsMap = new HashMap<String, Object>();
@@ -50,24 +56,35 @@ public class TestController {
         return student.getName();
     }
 
+    /**
+     * 测试手动传图token
+     * @param param
+     * @param principal
+     * @return
+     */
     @ResponseBody
-    @RequestMapping("/test3")
-    public String test3(@RequestParam("param") String param, Principal principal){
+    @GetMapping("/testManualToken")
+    public String testManualToken(@RequestParam("param") String param, Principal principal){
         System.out.println(principal);
         System.out.println(principal.getName());
         System.out.println("收到参数：" + param);
 
         //testFc.test3(param);
 
-
         return "收到参数：" + param;
     }
 
+    /**
+     * 测试分布式事务
+     * @param param
+     * @param principal
+     * @return
+     */
     @ResponseBody
-    @RequestMapping("/test5")
-    public String test5(@RequestParam("param") String param, Principal principal){
-
-        personService.test1(param);
+    @GetMapping("/testDistTransaction")
+    public String testDistTransaction(@RequestParam("param") String param, Principal principal){
+        System.out.println(principal);
+        personService.testDistTransaction(param);
         return "收到参数：" + param;
     }
 }

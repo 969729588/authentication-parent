@@ -24,9 +24,11 @@ public class PersonService extends BaseService<Person, PersonExample>{
     @Autowired
     private PersonMapper personMapper;
 
-    //只需要一个注解，标注在service的方法上即可
+    /**
+     * 只需要一个注解，标注在service的方法上即可实现分布式事务
+     */
     @GlobalTransactional
-    public void test1(String param) {
+    public void testDistTransaction(String param) {
         System.out.println("收到参数：" + param);
 
         txClientServiceAFc.callA(param);

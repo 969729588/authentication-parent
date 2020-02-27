@@ -15,5 +15,4 @@ public class TestExceptionController {
     public void test500(){
         System.out.println(1/0);
     }
-
 }

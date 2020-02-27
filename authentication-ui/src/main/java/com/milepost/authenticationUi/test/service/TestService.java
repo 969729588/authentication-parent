@@ -12,7 +12,7 @@ public class TestService {
 
     @Transactional
     @SynchronizedLock
-    public String test1(String flag, Integer sleep) throws InterruptedException {
+    public String testSynchronizedLock(String flag, Integer sleep) throws InterruptedException {
         System.out.println("TestService.test1--1" + ", flag="+flag);
         Thread.sleep(sleep*1L);
         System.out.println("TestService.test1--2" + ", flag="+flag);

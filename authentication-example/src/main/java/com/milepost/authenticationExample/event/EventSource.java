@@ -1,4 +1,4 @@
-package com.milepost.authenticationUi.test.event;
+package com.milepost.authenticationExample.event;
 
 /**
  * Created by Ruifu Hua on 2020/2/26.

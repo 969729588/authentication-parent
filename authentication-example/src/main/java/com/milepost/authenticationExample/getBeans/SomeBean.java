@@ -1,4 +1,4 @@
-package com.milepost.authenticationUi.test.getBeans;
+package com.milepost.authenticationExample.getBeans;
 
 /**
  * Created by Ruifu Hua on 2020/2/26.

@@ -1,23 +1,18 @@
 package com.milepost.authenticationUi.test.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.milepost.authenticationUi.test.event.CustomEvent;
-import com.milepost.authenticationUi.test.event.EventSource;
 import com.milepost.authenticationUi.test.feignClient.TestFc;
 import com.milepost.authenticationUi.test.service.TestService;
-import io.micrometer.core.instrument.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.event.EventListener;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.security.Principal;
@@ -30,12 +25,6 @@ import java.security.Principal;
 public class TestController {
 
     private Logger logger = LoggerFactory.getLogger(TestController.class);
-
-    /**
-     * 发布事件
-     */
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
     private TestService testService;
@@ -52,81 +41,46 @@ public class TestController {
     @Autowired
     private TestFc testFc;
 
-    @EventListener
-    public void applicationReady(Object object) {
-        System.out.println(object.toString());//org.springframework.cloud.client.discovery.event.HeartbeatEvent
-
-        System.out.println("------------");
-    }
-
     /**
-     * https://192.168.223.1:9990/authentication-ui/test/test3?param=123
+     * 测试在请求中传入token，将token传入Fc中
+     * http://192.168.223.1:9990/authentication-ui/test/testManualToken?param=123
      * @param param
      * @return
      */
     @ResponseBody
-    @RequestMapping("/test3")
-    public String test3(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
+    @GetMapping("/testManualToken")
+    public String testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
         System.out.println(param);
-        return testFc.test3(/*token,*/ param);
-    }
-
-    /**
-     * http://localhost:9998/test/test2?key=test.aaa
-     * https://localhost:9990/authentication-ui/test/test2?key=eureka.instance.ip-address
-     *
-     * @param key
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/test2")
-    public String test2(@RequestParam("key") String key){
-        System.out.println(environment.getProperty(key));
-        return environment.getProperty(key);
+        return testFc.testManualToken(/*token,*/ param);
     }
 
     /**
      * 测试分布式同步锁
-     * http://localhost:9997/test/test1?sleep=10000&flag=1
+     * http://192.168.223.1:9990/authentication-ui/test/testSynchronizedLock?sleep=10000&flag=1
      * @param sleep
      * @return
      * @throws InterruptedException
      */
     @ResponseBody
-    @RequestMapping("/test1")
-    public String test1(@RequestParam("flag") String flag, @RequestParam("sleep") Integer sleep) throws InterruptedException {
+    @GetMapping("/testSynchronizedLock")
+    public String testSynchronizedLock(@RequestParam("flag") String flag,
+                                       @RequestParam("sleep") Integer sleep) throws InterruptedException {
         System.out.println("TestController.test1--1" + ", flag="+flag);
-        String result = testService.test1(flag, sleep);
+        String result = testService.testSynchronizedLock(flag, sleep);
         System.out.println("TestController.test1--2" + ", flag="+flag);
         return result;
     }
 
     /**
-     * https://localhost:9990/authentication-ui/test/test0?flag=111
-     * @param flag
+     * 测试获取当前用户信息
+     * http://192.168.223.1:9990/authentication-ui/test/testGetPrincipal
+     * @param oAuth2Authentication
+     * @param principal
+     * @param authentication
      * @return
-     * @throws InterruptedException
      */
-    @ResponseBody
-    @RequestMapping("/test0")
-    public String test0(@RequestParam("flag") String flag) throws InterruptedException {
-        return flag;
-    }
-
-    /**
-     * https://localhost:9990/authentication-ui/test/test0?flag=111
-     * @return
-     * @throws InterruptedException
-     */
-    @ResponseBody
-    @RequestMapping("/test4")
-    public String test0(Principal principal) throws InterruptedException {
-        System.out.println(principal);
-        return principal.getName();
-    }
-
-    @GetMapping("/test5")
-    public OAuth2Authentication getPrinciple(OAuth2Authentication oAuth2Authentication, Principal principal,
+    @GetMapping("/testGetPrincipal")
+    public OAuth2Authentication testGetPrincipal(OAuth2Authentication oAuth2Authentication, Principal principal,
                                              Authentication authentication){
 
         logger.info(oAuth2Authentication.getUserAuthentication().getAuthorities().toString());
@@ -134,14 +88,14 @@ public class TestController {
         logger.info("principal.toString()"+principal.toString());
         logger.info("principal.getName()"+principal.getName());
         logger.info("authentication:"+authentication.getAuthorities().toString());
-
         return oAuth2Authentication;
-
     }
 
     /**
-     * 测试时候需要给feignclient设置超时时间，否则超时后会自动重试，影响测试
+     * 测试分布式事务
+     * http://192.168.223.1:9990/authentication-ui/test/testDistTransaction?param=123
      *
+     * 测试时候需要给feignclient设置超时时间，否则超时后会自动重试，影响测试
      * feign:
         client:
             config:
@@ -152,18 +106,9 @@ public class TestController {
      * @return
      */
     @ResponseBody
-    @GetMapping("/test6")
-    public String test6(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
+    @GetMapping("/testDistTransaction")
+    public String testDistTransaction(@RequestParam("param") String param){
         System.out.println("收到参数：" + param);
-        return testFc.test5(/*token,*/ param);
+        return testFc.testDistTransaction(param);
     }
-
-
-    @GetMapping("testPublishEvent")
-    public String testPublishEvent(){
-        CustomEvent customEvent = new CustomEvent(new EventSource("zhangsan", "123456"));
-        applicationEventPublisher.publishEvent(customEvent);
-        return "testPublishEvent";
-    }
-
 }

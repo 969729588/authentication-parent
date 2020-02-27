@@ -1,4 +1,5 @@
-package com.milepost.authenticationUi.test.controller;
+package com.milepost.authenticationExample.test.controller;
+
 
 import com.milepost.core.mq.ActiveMqService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TestActiveMqController {
         System.out.println("TestActiveMqController...");
     }
 
-    @Autowired
+    @Autowired(required = false)
     private ActiveMqService activeMqService;
 
     @JmsListener(destination = "queue1", containerFactory = "jmsListenerContainerFactoryQueue")

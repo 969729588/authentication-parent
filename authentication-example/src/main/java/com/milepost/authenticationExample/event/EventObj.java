@@ -1,4 +1,4 @@
-package com.milepost.authenticationUi.test.event;
+package com.milepost.authenticationExample.event;
 
 import org.springframework.context.ApplicationEvent;
 
@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationEvent;
  * Created by Ruifu Hua on 2020/2/26.
  * 事件对象
  */
-public class CustomEvent extends ApplicationEvent{
+public class EventObj extends ApplicationEvent{
 
     private Object source;
     /**
@@ -14,14 +14,14 @@ public class CustomEvent extends ApplicationEvent{
      *
      * @param source the object on which the event initially occurred (never {@code null})
      */
-    public CustomEvent(Object source) {
+    public EventObj(Object source) {
         super(source);
         this.source = source;
     }
 
     @Override
     public String toString() {
-        return "CustomEvent{" +
+        return "EventObj{" +
                 "source=" + source +
                 '}';
     }

@@ -1,6 +1,7 @@
 package com.milepost.authenticationUi.test.feignClient;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "${info.app.service.name}")//获取配置文件中的service服务名称
 public interface TestFc {
 
-    @RequestMapping("${info.app.service.prefix}/test/test3")
-    String test3(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
+    @GetMapping("${info.app.service.prefix}/test/testManualToken")
+    String testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
 
-    @RequestMapping("${info.app.service.prefix}/test/test5")
-    String test5(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
-
+    @GetMapping("${info.app.service.prefix}/test/testDistTransaction")
+    String testDistTransaction(@RequestParam("param") String param);
 }

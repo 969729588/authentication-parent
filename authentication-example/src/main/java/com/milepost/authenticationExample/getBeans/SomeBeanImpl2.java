@@ -1,4 +1,4 @@
-package com.milepost.authenticationUi.test.getBeans;
+package com.milepost.authenticationExample.getBeans;
 
 import org.springframework.stereotype.Component;
 
@@ -6,16 +6,16 @@ import org.springframework.stereotype.Component;
  * Created by Ruifu Hua on 2020/2/26.
  */
 @Component
-public class SomeBeanImpl1 implements SomeBean{
+public class SomeBeanImpl2 implements SomeBean {
 
     @Override
     public void doSomething(String input) {
-        System.out.println("SomeBeanImpl1 " + input);
+        System.out.println("SomeBeanImpl2 " + input);
     }
 
-    @SomeAnnotation(pro = "pro1")
+    @SomeAnnotation(pro = "pro2")
     @Override
     public String getSomething(String input) {
-        return "SomeBeanImpl1 " + input;
+        return "SomeBeanImpl2 " + input;
     }
 }
