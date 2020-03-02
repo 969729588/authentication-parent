@@ -90,7 +90,7 @@ public class TestRedisTemplateController {
     }
 
     /**
-     * 而是jedis
+     * 测试jedis，jedis没有序列化方面的问题
      * @param key
      * @param value
      * @return
