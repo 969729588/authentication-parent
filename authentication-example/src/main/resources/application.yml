@@ -60,14 +60,29 @@ spring:
     jedis:
       pool:
         #配置连接池属性
-        max-active: 20
-        min-idle: 10
-        max-idle: 20
+        max-active: 5
+        min-idle: 5
+        max-idle: 5
         max-wait: 2000
     #配置redis服务器属性
     database: 1
+
+    # 单机
     host: 192.168.223.129
     port: 6379
+
+    # 哨兵
+    #sentinel:
+      # master名称，启动哨兵时指定的
+      #master: mymaster
+      # 哨兵节点，如果哨兵也是一个集群，则多个节点用英文都要分割
+      #nodes: 192.168.223.129:6382
+
+    # 集群
+    #cluster:
+      #nodes: 192.168.223.129:6383,192.168.223.129:6384,192.168.223.129:6385,192.168.223.129:6386,192.168.223.129:6387,192.168.223.129:6388
+      #max-redirects: 6
+
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000

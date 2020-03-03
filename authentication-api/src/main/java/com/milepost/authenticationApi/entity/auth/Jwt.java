@@ -1,5 +1,7 @@
 package com.milepost.authenticationApi.entity.auth;
 
+import java.util.Date;
+
 /**
  * Created by Ruifu Hua on 2020/1/29.
  * Json Web Token
@@ -9,6 +11,7 @@ public class Jwt {
     private String token_type;
     private String refresh_token;
     private int expires_in;
+    private Date bornTime;
     private String scope;
     private String jti;
 
@@ -44,6 +47,14 @@ public class Jwt {
         this.expires_in = expires_in;
     }
 
+    public Date getBornTime() {
+        return bornTime;
+    }
+
+    public void setBornTime(Date bornTime) {
+        this.bornTime = bornTime;
+    }
+
     public String getScope() {
         return scope;
     }
@@ -67,6 +78,7 @@ public class Jwt {
                 ", token_type='" + token_type + '\'' +
                 ", refresh_token='" + refresh_token + '\'' +
                 ", expires_in=" + expires_in +
+                ", bornTime=" + bornTime +
                 ", scope='" + scope + '\'' +
                 ", jti='" + jti + '\'' +
                 '}';

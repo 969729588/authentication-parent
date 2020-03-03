@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +55,7 @@ public class LoginController {
             String basicAuthorization = "Basic " + EncryptionUtil.encodeWithBase64(clientId + ":" + clientSecret);//Basic Auth，即 client_id + ":" + client_secret 的base64编码
             String grantType = "password";//授权方式
             Jwt jwt = authFc.getToken(basicAuthorization, grantType, username, password);
+            jwt.setBornTime(new Date());
             result.put("jwt", jwt);
             result.put("jwt", jwt);
             String token = jwt.getAccess_token();
