@@ -55,23 +55,6 @@ public class TestController {
     }
 
     /**
-     * 测试分布式同步锁
-     * http://192.168.223.1:9990/authentication-ui/test/testSynchronizedLock?sleep=10000&flag=1
-     * @param sleep
-     * @return
-     * @throws InterruptedException
-     */
-    @ResponseBody
-    @GetMapping("/testSynchronizedLock")
-    public String testSynchronizedLock(@RequestParam("flag") String flag,
-                                       @RequestParam("sleep") Integer sleep) throws InterruptedException {
-        System.out.println("TestController.test1--1" + ", flag="+flag);
-        String result = testService.testSynchronizedLock(flag, sleep);
-        System.out.println("TestController.test1--2" + ", flag="+flag);
-        return result;
-    }
-
-    /**
      * 测试获取当前用户信息
      * http://192.168.223.1:9990/authentication-ui/test/testGetPrincipal
      * @param oAuth2Authentication

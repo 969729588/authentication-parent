@@ -1,4 +1,4 @@
-package com.milepost.authenticationExample.test.controller;
+package com.milepost.authenticationExample.activeMq.controller;
 
 import com.milepost.core.mq.ActiveMqService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.milepost.authenticationExample.test.controller;
+package com.milepost.authenticationExample.redisTemplate.controller;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.slf4j.Logger;

@@ -146,6 +146,24 @@ conditional:
   property: properExists
   express: true
 
+scheduler-lock:
+  # 是否启用分布式调度锁，默认true，即启用，如不启用则不能使用@SchedulerLock、InstanceRoleService。
+  enabled: true
+  # 维持心跳时间间隔，即每隔多久与redis交互一次，以维持自己的心跳，默认15s。
+  touch-heartbeat-interval-in-seconds: 15
+  # 心跳过期时长，默认45s。
+  heartbeat-expiration-duration-in-seconds: 45
+synchronized-lock:
+  # 是否启用分布式同步锁，默认true，即启用，如不启用则不能使用@SynchronizedLock。
+  enabled: true
+  # 分布式同步锁重试获取锁的间隔时间，即每隔多久重试一次是否有其他实例正占有锁，默认1000ms。
+  retry-interval-in-milliseconds: 1000
+  # 每一个实例能占有锁的最长时间，默认45s
+  hold-duration-in-seconds: 45
+
+
+
+
 
 
 
