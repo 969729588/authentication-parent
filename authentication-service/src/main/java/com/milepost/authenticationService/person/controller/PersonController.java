@@ -8,6 +8,7 @@ import com.milepost.authenticationApi.entity.person.Person;
 import com.milepost.authenticationApi.entity.person.PersonExample;
 import com.milepost.authenticationService.person.service.PersonService;
 import com.milepost.authenticationService.student.entity.Student;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import springfox.documentation.annotations.ApiIgnore;
 /**
  * Created by Ruifu Hua on 2020/1/16.
  */
+@Api(tags = "PersonController。。", description = "PersonController，是一个测试用的")
 @RestController
 @RequestMapping("/person")
 public class PersonController {

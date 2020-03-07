@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * Created by Ruifu Hua on 2020/3/5.
- * 配置那些不被认证保护资源，即可以不经过认证直接访问。<br>
+ * 配置那些不被认证保护资源，即可以不携带token直接访问的资源。<br>
  * 此处的配置与com.milepost.ui.config.auth.ResourceServerConfig的配置是合并的。
  */
 @Configuration
