@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Milepost</title>
+
+    <link rel="stylesheet" href="home/css/home.css"/>
+
+    <!--jquery-->
+    <script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>
+
+    <!--util-->
+    <script type="text/javascript" src="js/util/constant.js"></script>
+    <script type="text/javascript" src="js/util/base64.js"></script>
+    <script type="text/javascript" src="js/util/commonUtil.js"></script>
+    <script type="text/javascript" src="js/util/ajaxUtil.js"></script>
+
+    <!--page-->
+    <script type="text/javascript" src="home/js/home.js"></script>
+</head>
+<body>
+<div>
+    <h3>架的后端首页，包括导航，左侧菜单，底部版权，中间内容框</h3>
+
+    <button onclick="printData()">打印认证数据、服务元数据</button><br><br>
+    <button onclick="loadContentFrame()">加载content-frame</button><br>
+
+    <div class="content-frame">
+    </div>
+</div>
+</body>
+</html>

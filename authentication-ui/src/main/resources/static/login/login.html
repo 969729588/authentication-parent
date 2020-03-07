@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Milepost-登录</title>
+
+    <link rel="stylesheet" href="login/css/nui-1.4.css"/>
+    <link rel="stylesheet" href="login/css/login-nui.css">
+    <link rel="stylesheet" href="login/css/login-two.css"/>
+    <link rel="stylesheet" href="login/css/ued-lixw.css"/>
+
+    <style type="text/css">
+        .name input, .psw input {
+            width: 260px;
+        }
+    </style>
+
+    <!--jquery-->
+    <script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>
+
+    <!--util-->
+    <script type="text/javascript" src="js/util/constant.js"></script>
+    <script type="text/javascript" src="js/util/base64.js"></script>
+    <script type="text/javascript" src="js/util/commonUtil.js"></script>
+    <script type="text/javascript" src="js/util/ajaxUtil.js"></script>
+
+    <!--page-->
+    <script type="text/javascript" src="login/js/login.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+        });
+    </script>
+
+</head>
+<body>
+<div class="content">
+    <div id="mask" class="mask"
+         style="position: absolute; top: 0px; filter: alpha(opacity=60); background-color: #777; z-index: 1002; left: 0px; opacity:0.5; -moz-opacity:0.5; text-align: center; width: 100%; display: none;">
+        <div>
+            <img src="login/images/loading.gif" style="width:100px;height:100px;margin-top:300px">
+        </div>
+    </div>
+    <div class="bg"></div>
+    <div class="login">
+        <h2 class="text-center">欢迎使用milepost框架</h2>
+        <div id="login-form">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="p-b-md  name"><input type="text" placeholder="帐号"
+                                                                id="username" name="username" value="admin"/><span
+                                        class="icon-user-line f16"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-b-md  psw"><input type="password"
+                                                               placeholder="密码" id="password" name="password"
+                                                               value="123456"/><span
+                                        class="icon-locked-line f16"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-b-md psw">
+                                    <input name="imgCheckCode" class="text"
+                                           style="position:absolute; z-index:100; width:130px"
+                                           value="1234" type="text" placeholder="验证码">
+                                    <img src='login/checkCode'
+                                         style="width:100px;height:39px;align:absmiddle;margin-left:160px;margin-top:0px;cursor:pointer"
+                                         id="check" onclick="changeImg();return false;" title="点击换一个"></img>
+                                    <span class="icon-checkmark-line f16"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="">
+                                    <input type="button" class="custom-btn custom-btn-primary icon-login" value="登录"
+                                           id="login"/>
+                                    <button onclick="console.log(getAuthData());console.log(getMetadata());">打印认证数据
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="prompt">
+                                    <p id="loginError" class="prompt text-danger"></p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

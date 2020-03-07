@@ -19,6 +19,10 @@ public class Test1 extends BaseTest<AuthenticationUiApplication> {
         encryptor = getBean(StringEncryptor.class);
     }
 
+    @Test
+    public void test2(){
+        System.out.println("--------");
+    }
 
     /**
      * #jasypt加密的密匙
