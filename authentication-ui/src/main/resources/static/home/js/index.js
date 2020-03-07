@@ -3,7 +3,7 @@ $(function () {
 });
 
 function toOtherSys(){
-    var url = 'http://192.168.223.1:9980/oa-ui/testReadindex';
+    var url = 'http://192.168.223.1:9980/oa-ui/index';
     var paramsJsonObj = new Object();
     paramsJsonObj.metadata = JSON.stringify(getMetadata());
     paramsJsonObj.authData = JSON.stringify(getAuthData());

@@ -41,7 +41,7 @@ public class HomeController {
     }
 
     /**
-     * 暴露元数据
+     * 暴露实例元数据
      * @return
      */
     @ResponseBody

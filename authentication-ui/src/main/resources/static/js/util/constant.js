@@ -66,11 +66,11 @@ function getAccessToken(){
 }
 
 
-//服务元数据存储key
+//实例元数据存储key
 var metadataKey = 'metadataKey';
 
 /**
- * 初始化服务元数据，配置数据等，即获取那些在后端配置的数据，特别是yml中配置的，
+ * 初始化实例元数据，配置数据等，即获取那些在后端配置的数据，特别是yml中配置的，
  * 将数据存入sessionStorage中
  */
 function initMetadata(){
@@ -89,7 +89,7 @@ function initMetadata(){
 }
 
 /**
- * 获取元数据
+ * 获取实例元数据
  */
 function getMetadata() {
     var metadata = sessionStorage.getItem(metadataKey);

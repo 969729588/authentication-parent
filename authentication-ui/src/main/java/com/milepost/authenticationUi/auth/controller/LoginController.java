@@ -68,7 +68,7 @@ public class LoginController {
     }
 
     /**
-     * 暴露元数据，配置数据等 给前端
+     * 暴露实例元数据，配置数据等 给前端
      * @return
      */
     @ResponseBody
