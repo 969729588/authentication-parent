@@ -24,6 +24,11 @@ spring:
       username: root
       #password: admin123
       password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+#      db-type: oracle
+#      driver-class-name: oracle.jdbc.OracleDriver
+#      url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+#      username: MILEPOST_AUTH
+#      password: MILEPOST_AUTH
 
       initial-size: 5
       max-active: 20

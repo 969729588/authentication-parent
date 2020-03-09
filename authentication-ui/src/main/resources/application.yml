@@ -73,9 +73,9 @@ multiple-tenant:
   label-and: aa,bb
   #label-or: aa,bb,cc
 
-#feign:
-#  client:
-#    config:
-#      default:
-#        readTimeout: 600000
-#        connectTimeout: 600000
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 600000
+        connectTimeout: 600000
