@@ -75,7 +75,8 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
-
+#  flyway:
+#    enabled: false
 eureka:
   client:
     service-url:
@@ -113,7 +114,7 @@ multiple-tenant:
   label-or: dd,ee,ff
 
 dist-transaction:
-  enabled: false
+  enabled: true
 
 
 feign:
@@ -122,8 +123,8 @@ feign:
       default:
         readTimeout: 600000
         connectTimeout: 600000
-
-
+scheduler-lock:
+  enabled: false
 
 
 

@@ -71,7 +71,7 @@ multiple-tenant:
   tenant: tenant1
   weight: 2
   label-and: aa,bb
-  #label-or: aa,bb,cc
+  label-or: ee
 
 feign:
   client:

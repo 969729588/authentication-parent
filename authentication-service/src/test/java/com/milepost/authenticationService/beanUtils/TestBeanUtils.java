@@ -17,6 +17,16 @@ import java.util.Map;
 public class TestBeanUtils {
 
     @Test
+    public void test2(){
+        Map<String, String> envMap = System.getenv();
+        //java.lang.UnsupportedOperationException
+        envMap.put("test", "123");
+
+        System.out.println(System.getenv("test"));
+    }
+
+
+    @Test
     public void test1() throws InvocationTargetException, IllegalAccessException {
         String key0 = "spring.datasource.druid.one";
         String key1 = "spring.datasource.druid.one.password";

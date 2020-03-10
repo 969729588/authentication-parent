@@ -1,21 +1,20 @@
 info:
   app:
-    name: authentication-service-name
-    #description: 认证service-des
-    description: ENC(xuInkd7Hx/C/QkaTYEaDZvkkfhNBocQfIWJxnP2DJjWBzuq4u26FcA==)
-    version: 1.0.0.100
+    name: authentication-service-test
+    description: 认证service-des-test
+    version: 111111
 
 server:
 #  port: 9994
 #  port: 9993
 #  port: 9992
-  port: 9991
+  port: 99911
   servlet:
-    context-path: "/authentication-service"
+    context-path: "/authentication-service-test"
 
 spring:
   application:
-    name: authentication-service
+    name: authentication-service-test
   profiles:
     active: dev
   datasource:
@@ -24,10 +23,9 @@ spring:
       db-type: mysql
 
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.223.129:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.223.130:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
       username: root
-      #password: admin123
-      password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+      password: admin123
 
       initial-size: 5
       max-active: 20
@@ -52,12 +50,12 @@ spring:
       one:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://192.168.223.129:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
-        username: root
-        password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
+        username: root1
+        password: admin1234555
       two:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://192.168.223.129:3306/milepost_auth_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
-        username: root
+        username: root2
         password: admin123
 
   redis:
@@ -70,60 +68,37 @@ spring:
         max-wait: 2000
     #配置redis服务器属性
     database: 1
-    host: 192.168.223.129
+    host: 192.168.223.130
     port: 6379
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
-
+  flyway:
+    enabled: false
 eureka:
   client:
     service-url:
-      #defaultZone: http://192.168.1.105:8761/eureka/
-      defaultZone: http://192.168.223.129:8761/eureka/
+      defaultZone: http://192.168.1.105:8761/eureka/
   instance:
     ip-address: 192.168.223.1
-    #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
-    #instance-id: xxx
-
-#为了EurekaServer更灵敏而加的
-#eureka.instance.lease-renewal-interval-in-seconds: 4
-#eureka.instance.lease-expiration-duration-in-seconds: 7
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 1
-#  label-and: aa,bb
-#  label-or: aa
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 9
-#  label-and: aa,bb
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 0
-#  label-and: aa,bb
 
 multiple-tenant:
-  tenant: tenant1
+  tenant: tenant3
   weight: 9
-  label-and: aa,bb
-  label-or: dd,ee,ff
+  label-and: 11,22
+  label-or: 33,44,55
 
 dist-transaction:
-  enabled: false
-
-
+  enabled: true
+  tx-server-app-name: test111
 feign:
   client:
     config:
       default:
         readTimeout: 600000
         connectTimeout: 600000
-
-
+scheduler-lock:
+  enabled: false
 
 
 
