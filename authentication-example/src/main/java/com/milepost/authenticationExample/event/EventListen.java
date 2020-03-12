@@ -23,10 +23,10 @@ public class EventListen {
      * 监听所有事件
      * @param object
      */
-    @EventListener
+    /*@EventListener
     public void applicationReady(Object object) {
         System.out.println(object.toString());
 
         System.out.println("------------");
-    }
+    }*/
 }
