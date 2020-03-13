@@ -23,7 +23,11 @@ function printData() {
  * 加载ContentFrame
  */
 function loadContentFrame() {
-    $('.content-frame').load(getContextPath() + '/home/index.html');
+    //Accept: text/html, */*; q=0.01
+    //Content-Type: text/html
+    $('.content-frame').load(getContextPath() + '/home/index.html',function () {
+        alert('加载页面完成，此时可以在回调函数中发送ajax请求数据，渲染页面。');
+    });
 }
 
 $(function () {

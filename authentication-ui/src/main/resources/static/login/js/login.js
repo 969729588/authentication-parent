@@ -1,8 +1,6 @@
 /**
  * Created by Huarf on 2020/3/6.
  */
-
-
 $(function () {
 
     //初始化实例元数据，配置数据等，即获取那些在后端配置的数据，特别是yml中配置的，将数据存入sessionStorage中
@@ -34,6 +32,8 @@ function login() {
     }
 
 //        showMask();
+    //Accept: application/json, text/javascript, */*; q=0.01
+    //Content-Type: application/json;charset=UTF-8
     $.ajax({
         type: "POST",
         url: getContextPath() + '/login/doLogin',
