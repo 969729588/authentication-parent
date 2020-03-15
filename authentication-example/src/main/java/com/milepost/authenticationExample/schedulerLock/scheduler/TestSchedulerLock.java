@@ -62,15 +62,15 @@ public class TestSchedulerLock {
 //        }
 //    }
 
-    @SchedulerLock(model = SchedulerLockModel.slave)
-    @Scheduled(initialDelay = 10000, fixedDelay = 5000)
-    public void testSchedulerLockSlave() {
-        logger.info("所有slave运行这个定时任务");
-    }
-
-    @SchedulerLock(model = SchedulerLockModel.master)
-    @Scheduled(initialDelay = 10000, fixedDelay = 10000)
-    public void testSchedulerLockMaster() {
-        logger.info("只有master运行这个定时任务");
-    }
+//    @SchedulerLock(model = SchedulerLockModel.slave)
+//    @Scheduled(initialDelay = 10000, fixedDelay = 5000)
+//    public void testSchedulerLockSlave() {
+//        logger.info("所有slave运行这个定时任务");
+//    }
+//
+//    @SchedulerLock(model = SchedulerLockModel.master)
+//    @Scheduled(initialDelay = 10000, fixedDelay = 10000)
+//    public void testSchedulerLockMaster() {
+//        logger.info("只有master运行这个定时任务");
+//    }
 }

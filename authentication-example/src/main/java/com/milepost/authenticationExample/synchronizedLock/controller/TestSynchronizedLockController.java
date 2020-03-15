@@ -1,6 +1,6 @@
-package com.milepost.authenticationExample.SynchronizedLock.controller;
+package com.milepost.authenticationExample.synchronizedLock.controller;
 
-import com.milepost.authenticationExample.SynchronizedLock.service.TestSynchronizedLockService;
+import com.milepost.authenticationExample.synchronizedLock.service.TestSynchronizedLockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

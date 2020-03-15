@@ -1,4 +1,4 @@
-package com.milepost.authenticationExample.SynchronizedLock.service;
+package com.milepost.authenticationExample.synchronizedLock.service;
 
 import com.milepost.core.lock.SynchronizedLock;
 import org.apache.commons.lang.time.DateFormatUtils;
