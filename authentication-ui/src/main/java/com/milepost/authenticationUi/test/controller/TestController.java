@@ -1,5 +1,6 @@
 package com.milepost.authenticationUi.test.controller;
 
+import com.milepost.api.vo.response.Response;
 import com.milepost.authenticationUi.test.feignClient.TestFc;
 import com.milepost.authenticationUi.test.service.TestService;
 import org.slf4j.Logger;
@@ -49,9 +50,10 @@ public class TestController {
      */
     @ResponseBody
     @GetMapping("/testManualToken")
-    public String testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
+    public Response<String> testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
         System.out.println(param);
-        return testFc.testManualToken(/*token,*/ param);
+        Response<String> response = testFc.testManualToken(/*token,*/ param);
+        return response;
     }
 
     /**

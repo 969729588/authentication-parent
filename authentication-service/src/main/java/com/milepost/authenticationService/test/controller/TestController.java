@@ -1,5 +1,7 @@
 package com.milepost.authenticationService.test.controller;
 
+import com.milepost.api.vo.response.Response;
+import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.authenticationService.person.service.PersonService;
 import com.milepost.authenticationService.student.entity.Student;
 import com.milepost.authenticationService.student.service.StudentService;
@@ -64,14 +66,19 @@ public class TestController {
      */
     @ResponseBody
     @GetMapping("/testManualToken")
-    public String testManualToken(@RequestParam("param") String param, Principal principal){
-        System.out.println(principal);
-        System.out.println(principal.getName());
-        System.out.println("收到参数：" + param);
-
-        //testFc.test3(param);
-
-        return "收到参数：" + param;
+    public Response<String> testManualToken(@RequestParam("param") String param, Principal principal){
+        Response<String> response = null;
+        try {
+            System.out.println(principal);
+            System.out.println(principal.getName());
+            System.out.println("收到参数：" + param);
+            //testFc.test3(param);
+            int i = 1/0;
+            response = ResponseHelper.createSuccessResponse("收到参数：" + param);
+        }catch (Exception e){
+            response = ResponseHelper.createExceptionResponse(e);
+        }
+        return response;
     }
 
     /**

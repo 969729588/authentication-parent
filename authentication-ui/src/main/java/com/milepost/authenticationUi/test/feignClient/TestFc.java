@@ -1,8 +1,8 @@
 package com.milepost.authenticationUi.test.feignClient;
 
+import com.milepost.api.vo.response.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TestFc {
 
     @GetMapping("${info.app.service.prefix}/test/testManualToken")
-    String testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
+    Response<String> testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param);
 
     @GetMapping("${info.app.service.prefix}/test/testDistTransaction")
     String testDistTransaction(@RequestParam("param") String param);

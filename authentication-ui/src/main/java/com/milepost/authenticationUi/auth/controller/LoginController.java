@@ -120,18 +120,20 @@ public class LoginController {
             }
         }catch (Exception e){
             logger.error(e.getMessage(), e);
-            response = ResponseHelper.createFailResponse();
-            int status = ((FeignException) e).status();
-            switch(status) {
-                case 400:
-                    response.setMsg("密码错误");
-                    break;
-                case 401:
-                    response.setMsg("用户名错误");
-                    break;
-                default:
-                    response.setMsg("登录信息错误");
-                    break;
+            response = ResponseHelper.createExceptionResponse(e);
+            if(e instanceof FeignException){
+                int status = ((FeignException) e).status();
+                switch(status) {
+                    case 400:
+                        response.setMsg("密码错误");
+                        break;
+                    case 401:
+                        response.setMsg("用户名错误");
+                        break;
+                    default:
+                        response.setMsg("登录信息错误");
+                        break;
+                }
             }
         }
         return response;
