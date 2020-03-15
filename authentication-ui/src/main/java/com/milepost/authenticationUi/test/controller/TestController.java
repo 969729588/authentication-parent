@@ -50,7 +50,7 @@ public class TestController {
      */
     @ResponseBody
     @GetMapping("/testManualToken")
-    public Response<String> testManualToken(/* @RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
+    public Response<String> testManualToken(/*@RequestHeader(value = "Authorization") String token,*/ @RequestParam("param") String param){
         System.out.println(param);
         Response<String> response = testFc.testManualToken(/*token,*/ param);
         return response;
