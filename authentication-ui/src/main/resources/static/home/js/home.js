@@ -30,6 +30,15 @@ function loadContentFrame() {
     });
 }
 
+/**
+ * 测试参数传递
+ */
+function testParam() {
+    $('.content-frame').load(getContextPath() + '/testParam/testParam.html',function () {
+        //alert('加载页面完成，此时可以在回调函数中发送ajax请求数据，渲染页面。');
+    });
+}
+
 $(function () {
 
     //显示右侧内容

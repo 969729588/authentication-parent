@@ -1,5 +1,7 @@
 package com.milepost.authenticationApi.entity.person;
 
+import com.milepost.authenticationApi.entity.user.User;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -52,6 +54,8 @@ public class Person implements Serializable {
      */
     private String remark;
 
+    private User user;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -102,6 +106,14 @@ public class Person implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -114,6 +126,7 @@ public class Person implements Serializable {
         sb.append(", birth=").append(birth);
         sb.append(", score=").append(score);
         sb.append(", remark=").append(remark);
+        sb.append(", user=").append(user);
         sb.append("]");
         return sb.toString();
     }
