@@ -31,10 +31,6 @@ public class TestParamController {
 
     private static final String CALL_SUCCESS = "调用成功";
 
-    /**
-     * @param mapList
-     * @return
-     */
     @ResponseBody
     @PostMapping("/listMap")
     public Response<List<Map<String, Object>>> listMap(@RequestBody List<Map<String, Object>> mapList) {
@@ -51,10 +47,6 @@ public class TestParamController {
         return response;
     }
 
-    /**
-     * @param personList
-     * @return
-     */
     @ResponseBody
     @PostMapping("/listPojo")
     public Response<List<Person>> listPojo(@RequestBody List<Person> personList) {
@@ -71,10 +63,6 @@ public class TestParamController {
         return response;
     }
 
-    /**
-     * @param person
-     * @return
-     */
     @ResponseBody
     @PostMapping("/complexPojo")
     public Response<Person> complexPojo(@RequestBody Person person) {
@@ -89,10 +77,6 @@ public class TestParamController {
         return response;
     }
 
-    /**
-     * @param map
-     * @return
-     */
     @ResponseBody
     @PostMapping("/map")
     public Response<Map<String, Object>> map(@RequestBody Map<String, Object> map) {

@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by Ruifu Hua on 2020/3/15.
  */
-@FeignClient(value = "${info.app.service.name}")//获取配置文件中的service服务名称
+@FeignClient(value = "${info.app.service.name}")
 @RequestMapping("${info.app.service.prefix}/testParam")
 public interface TestParamFc {
 

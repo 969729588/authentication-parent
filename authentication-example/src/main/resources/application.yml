@@ -153,7 +153,7 @@ conditional:
 
 scheduler-lock:
   # 是否启用分布式调度锁，默认true，即启用，如不启用则不能使用@SchedulerLock、InstanceRoleService。
-  enabled: false
+  enabled: true
   touch-heartbeat-interval-in-milliseconds: 15000
   heartbeat-expiration-duration-in-seconds: 45
 synchronized-lock:

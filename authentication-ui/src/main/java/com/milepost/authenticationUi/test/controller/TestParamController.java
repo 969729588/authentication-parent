@@ -28,8 +28,6 @@ public class TestParamController {
 
     private Logger logger = LoggerFactory.getLogger(TestParamController.class);
 
-    private static final String CALL_SUCCESS = "调用成功";
-
     /**
      * @param paramList
      * @return

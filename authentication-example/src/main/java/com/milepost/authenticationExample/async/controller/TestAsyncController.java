@@ -1,5 +1,6 @@
 package com.milepost.authenticationExample.async.controller;
 
+import com.milepost.core.lock.ThreadPoolTaskExecutorConfig;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,10 @@ public class TestAsyncController {
     @Async
     @ResponseBody
     public void test1(@RequestParam("param") int param){
+        System.out.println("当前线程名称：" + Thread.currentThread().getName());
+        //打印线程池信息
+        ThreadPoolTaskExecutorConfig.printThreadPoolInfo();
+
         System.out.println("--------");
         System.out.println(1/param);
         System.out.println("--------");

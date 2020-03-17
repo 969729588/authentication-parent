@@ -3,11 +3,13 @@ package com.milepost.authenticationExample.getServiceInEureka.controller;
 import com.milepost.api.vo.response.Response;
 import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.core.lock.InstanceRoleService;
+import com.netflix.appinfo.InstanceInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,6 +67,8 @@ public class TestDiscoveryClientController {
                     map.put("appName", service.toUpperCase());
                     map.put("instanceId", instanceId);
                     list.add(map);
+                    InstanceInfo instanceInfo = ((EurekaDiscoveryClient.EurekaServiceInstance) serviceInstance).getInstanceInfo();
+                    System.out.println(instanceInfo);
                 }
             }
             response = ResponseHelper.createSuccessResponse(list);

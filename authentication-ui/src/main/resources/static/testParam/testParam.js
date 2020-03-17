@@ -2,26 +2,9 @@
  * Created by Huarf on 2020/3/15.
  */
 
-/**
- *
- var person1 = {
-    id : "1",
-    firstName : "张三1",
-    birth : "2020-03-16 11:11:11",
-    score : 11.11,
-    user: {
-        id: "1",
-        username: "李四1",
-        mobile: "12345678901"
-    }
-};
- */
-
-
 function list() {
     $.ajax({
         type: "POST",
-        //contentType: "application/json;charset=UTF-8",
         data: {
             paramList: ["aa", "bb", "cc"]
         },
@@ -39,7 +22,6 @@ function list() {
 function array() {
     $.ajax({
         type: "POST",
-        //contentType: "application/json;charset=UTF-8",
         data: {
             paramArray: ["aa", "bb", "cc"]
         },
