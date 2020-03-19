@@ -19,30 +19,16 @@ function printData() {
     console.log(getContextPath());
 }
 
-/**
- * 加载ContentFrame
- */
-function loadContentFrame() {
+function reloadIndex() {
     //Accept: text/html, */*; q=0.01
     //Content-Type: text/html
-    $('.content-frame').load(getContextPath() + '/home/index.html',function () {
-        alert('加载页面完成，此时可以在回调函数中发送ajax请求数据，渲染页面。');
-    });
-}
-
-/**
- * 测试参数传递
- */
-function testParam() {
-    $('.content-frame').load(getContextPath() + '/testParam/testParam.html',function () {
-        //alert('加载页面完成，此时可以在回调函数中发送ajax请求数据，渲染页面。');
+    $('.content-frame').load(getContextPath() + '/index/index.html',function () {
+        console.log('加载页面完成事件');
     });
 }
 
 $(function () {
-
-    //显示右侧内容
-    //$('body').load(getContextPath() + '/home/home.html');
-
+    //显示首页内容
+    $('.content-frame').load(getContextPath() + '/index/index.html');
 });
 

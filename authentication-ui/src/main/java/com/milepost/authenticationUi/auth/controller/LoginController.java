@@ -10,6 +10,7 @@ import com.milepost.authenticationUi.auth.feignClient.AuthFc;
 import com.milepost.authenticationUi.user.feignClient.UserFc;
 import com.milepost.core.multipleTenant.MultipleTenantProperties;
 import feign.FeignException;
+import feign.RetryableException;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,7 +122,9 @@ public class LoginController {
         }catch (Exception e){
             logger.error(e.getMessage(), e);
             response = ResponseHelper.createExceptionResponse(e);
-            if(e instanceof FeignException){
+            if(e instanceof RetryableException){
+                response.setMsg("调用服务超时");
+            }else if(e instanceof FeignException){
                 int status = ((FeignException) e).status();
                 switch(status) {
                     case 400:

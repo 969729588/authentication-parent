@@ -65,7 +65,6 @@ function getAccessToken(){
     }
 }
 
-
 //实例元数据存储key
 var metadataKey = 'metadataKey';
 
@@ -89,9 +88,20 @@ function initMetadata(){
 }
 
 /**
+ * 保存实例元数据
+ * @param inputAuthData
+ */
+function saveMetadata(inputMetadata){
+    sessionStorage.setItem(metadataKey, JSON.stringify(inputMetadata));
+}
+
+/**
  * 获取实例元数据
  */
 function getMetadata() {
+    var metadata = {
+        "contextPath": null
+    }
     var metadata = sessionStorage.getItem(metadataKey);
     if(isValid(metadata)){
         metadata = JSON.parse(metadata);

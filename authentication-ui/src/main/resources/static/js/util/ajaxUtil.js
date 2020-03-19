@@ -9,7 +9,7 @@ $.ajaxSetup({
     beforeSend : function (jqXHR) {
         var accessToken = getAccessToken();
         if(isValid(getAccessToken())){
-            console.log('ajaxSetup设置Authorization');
+            //console.log('ajaxSetup设置Authorization');
             jqXHR.setRequestHeader("Authorization", "Bearer " + accessToken);
         }else{
             console.log('access_token不存在，ajaxSetup无法设置Authorization');

@@ -1,17 +1,13 @@
 info:
   app:
-    name: authentication-ui-name
-    #description: 认证ui-des
-    description: ENC(VQvR3ACYqLL9llFIsPEqyEZMFcswAReTqKpDfWiJ16I=)
+    name: 认证服务UI
+    description: 所有服务的入口
     version: 1.0.0.100
     #此ui依赖的service的服务名称，用于在@FeignClient中
     service:
       name: authentication-service
       #就是service的server.servlet.context-path，去掉“/”
       prefix: "authentication-service"
-    auth-service:
-      name: milepost-auth
-      prefix: "milepost-auth"
 server:
   port: 9990
   servlet:
