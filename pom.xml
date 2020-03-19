@@ -21,11 +21,6 @@
         <module>authentication-api</module>
         <module>authentication-ui</module>
         <module>authentication-service</module>
-        <module>authentication-example</module>
-        <module>other-service</module>
-        <module>tx-client-service-a</module>
-        <module>tx-client-service-b</module>
-        <module>tx-client-service-c</module>
     </modules>
 
 </project>

@@ -1,8 +1,7 @@
 info:
   app:
     name: authentication-service-name
-    #description: 认证service-des
-    description: ENC(xuInkd7Hx/C/QkaTYEaDZvkkfhNBocQfIWJxnP2DJjWBzuq4u26FcA==)
+    description: 认证service-des
     version: 1.0.0.100
 
 server:
@@ -47,19 +46,6 @@ spring:
       #max-evictable-idle-time-millis:
       #配置多个英文逗号分隔
       #filters:
-
-      #多数据源
-      one:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.223.129:3306/milepost_auth_1?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
-        username: root
-        password: ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)
-      two:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.223.129:3306/milepost_auth_2?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
-        username: root
-        password: admin123
-
   redis:
     jedis:
       pool:
@@ -75,36 +61,14 @@ spring:
     #password: bomc
     #redis连接超时时间，单位毫秒
     timeout: 2000
-
+  flyway:
+    enabled: false
 eureka:
   client:
     service-url:
-      #defaultZone: http://192.168.1.105:8761/eureka/
       defaultZone: http://192.168.223.129:8761/eureka/
   instance:
     ip-address: 192.168.223.1
-    #${eureka.instance.ip-address}:${spring.application.name}:${server.port}
-    #instance-id: xxx
-
-#为了EurekaServer更灵敏而加的
-#eureka.instance.lease-renewal-interval-in-seconds: 4
-#eureka.instance.lease-expiration-duration-in-seconds: 7
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 1
-#  label-and: aa,bb
-#  label-or: aa
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 9
-#  label-and: aa,bb
-
-#multiple-tenant:
-#  tenant: abc
-#  weight: 0
-#  label-and: aa,bb
 
 multiple-tenant:
   tenant: tenant1
@@ -112,16 +76,6 @@ multiple-tenant:
   label-and: aa,bb
   label-or: dd,ee,ff
 
-dist-transaction:
-  enabled: false
-
-
-feign:
-  client:
-    config:
-      default:
-        readTimeout: 600000
-        connectTimeout: 600000
 
 
 

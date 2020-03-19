@@ -55,25 +55,3 @@ multiple-tenant:
   weight: 2
   label-and: aa,bb
   label-or: ee
-
-feign:
-  client:
-    config:
-      default:
-        readTimeout: 600000
-        connectTimeout: 600000
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    shutdown:
-      enabled: true
-thread-pool:
-  core-pool-size: 5
-  max-pool-size: 7
-  queue-capacity: 1
-

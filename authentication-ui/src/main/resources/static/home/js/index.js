@@ -2,8 +2,8 @@ $(function () {
 
 });
 
-function toOtherSys(){
-    var url = 'http://192.168.223.1:9980/oa-ui/index';
+function toExampleSys(){
+    var url = 'http://192.168.223.1:9980/example-ui/index';
     var paramsJsonObj = new Object();
     paramsJsonObj.metadata = JSON.stringify(getMetadata());
     var authData = getAuthData();
