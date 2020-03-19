@@ -19,7 +19,7 @@ start() {
     --spring.datasource.druid.one.password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)' \
     --spring.datasource.druid.two.username=root \
     --spring.redis.host=192.168.223.129 \
-    --spring.flyway.enabled=true \
+    --spring.flyway.enabled=false \
     --eureka.client.service-url.defaultZone='http://192.168.223.129:8761/eureka/' \
     --eureka.instance.ip-address=192.168.223.129 \
     --multiple-tenant.tenant=tenant1 \

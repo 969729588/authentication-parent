@@ -31,7 +31,7 @@ function login() {
         return;
     }
 
-//        showMask();
+    showMask();
     //Accept: application/json, text/javascript, */*; q=0.01
     //Content-Type: application/json;charset=UTF-8
     $.ajax({
@@ -52,6 +52,7 @@ function login() {
                 printErrorMsg(data.msg);
                 changeImg();
             }
+            hideMask();
         }
     });
 }
