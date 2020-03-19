@@ -1,11 +1,11 @@
 package com.milepost.authenticationUi.index.controller;
 
-import com.milepost.api.constant.MilepostConstant;
 import com.milepost.api.enums.MilepostApplicationType;
 import com.milepost.api.vo.response.Response;
 import com.milepost.api.vo.response.ResponseHelper;
 import com.milepost.core.multipleTenant.MultipleTenantProperties;
 import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.lang.model.type.PrimitiveType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,12 +35,12 @@ public class IndexController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private EurekaClient eurekaClient;
+
     //获取当前租户
     @Autowired
     private MultipleTenantProperties multipleTenantProperties;
-
-    @Autowired
-    private Environment environment;
 
     /**
      * 认证UI的服务名称
@@ -52,6 +51,72 @@ public class IndexController {
      */
     private final static String AUTHENTICATION_SERVICE = "authentication-service";
 
+    /**
+     *
+     */
+//    @ResponseBody
+//    @GetMapping("/serviceInstance")
+//    public Response<List<Map<String, String>>> getServiceInstance(){
+//        Response<List<Map<String, String>>> response = null;
+//        try {
+//            List<Map<String, String>> instanceInfoList = new ArrayList<>();
+//            String tenant = multipleTenantProperties.getTenant();
+//
+//            Applications applications = eurekaClient.getApplications();
+//            List<Application> registeredApplications = applications.getRegisteredApplications();
+//            for(Application application : registeredApplications){
+//                String appName = application.getName();
+//                //不显示认证UI和认证Service
+//                if(appName.equalsIgnoreCase(AUTHENTICATION_UI) || appName.equalsIgnoreCase(AUTHENTICATION_SERVICE)){
+//                    continue;
+//                }
+//                List<InstanceInfo> instancesAsIsFromEureka = application.getInstancesAsIsFromEureka();
+//                for(InstanceInfo instanceInfo : instancesAsIsFromEureka){
+//                    Map<String, String> metadata = instanceInfo.getMetadata();
+//                    String thisTenant = metadata.get("tenant");
+//                    if(StringUtils.isBlank(thisTenant)){
+//                        //分布式事务服务端
+//                        continue;
+//                    }
+//                    //过滤出当前租户下的（租户是大小写不敏感的）
+//                    if(thisTenant.equalsIgnoreCase(tenant)){
+//                        Map<String, String> map = new HashMap<>();
+//                        map.put("instanceId", instanceInfo.getInstanceId());//实例id
+//                        map.put("appName", instanceInfo.getAppName());//服务(应用)名称，spring.application.name
+//                        String appType = metadata.get("milepost-type");//应用类型
+//                        map.put("appType", appType);
+//                        map.put("name", metadata.get("name"));//info.app.name
+//                        map.put("description", metadata.get("description"));//info.app.description
+//                        map.put("version", metadata.get("version"));//版本
+//                        if(appType.equalsIgnoreCase(MilepostApplicationType.UI.getValue())){
+//                            map.put("url", instanceInfo.getHomePageUrl() + "/index");//首页url
+//                        }else{
+//                            map.put("url", instanceInfo.getStatusPageUrl());//info页面
+//                        }
+//                        map.put("contextPath", metadata.get("context-path"));//服务context-path
+//                        map.put("tenant", thisTenant);//租户
+//
+//                        instanceInfoList.add(map);
+//                    }
+//                }
+//            }
+//            response = ResponseHelper.createSuccessResponse(instanceInfoList);
+//        }catch (Exception e){
+//            logger.error(e.getMessage(), e);
+//            response = ResponseHelper.createFailResponse();
+//        }
+//        return response;
+//    }
+
+    /**
+     * 使用discoveryClient和eurekaClient获取服务都有延时，
+     * 最大延时时间为：
+     * EurekaServer端的eureka.server.response-cache-update-interval-ms与
+     * EurekaClient端的eureka.client.registry-fetch-interval-seconds之和
+     *
+     * eurekaClient可以获取到Seata服务端，discoveryClient获取不到。
+     * @return
+     */
     @ResponseBody
     @GetMapping("/serviceInstance")
     public Response<List<Map<String, String>>> getServiceInstance(){
