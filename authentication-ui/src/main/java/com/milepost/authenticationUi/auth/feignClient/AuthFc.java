@@ -4,6 +4,7 @@ import com.milepost.authenticationApi.entity.auth.Jwt;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 调用认证服务（milepost-auth）
  */
 @FeignClient("${info.app.auth-service.name}")
+@RequestMapping("${info.app.auth-service.prefix}/oauth")
 public interface AuthFc {
 
     /**
@@ -21,7 +23,7 @@ public interface AuthFc {
      * @param password
      * @return
      */
-    @PostMapping("${info.app.auth-service.prefix}/oauth/token")
+    @PostMapping("/token")
     Jwt getToken(@RequestHeader(value = "Authorization") String authorization,
                  @RequestParam("grant_type") String grantType,
                  @RequestParam("username") String username,
