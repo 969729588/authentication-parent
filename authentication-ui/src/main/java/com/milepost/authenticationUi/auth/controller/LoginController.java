@@ -161,7 +161,6 @@ public class LoginController {
         Jwt jwt = authFc.getToken(basicAuthorization, grantType, username, password);
         jwt.setBorn_time_millis(Instant.now().toEpochMilli());
         result.put("jwt", jwt);
-        result.put("jwt", jwt);
         String token = jwt.getAccess_token();
         String tokenType = jwt.getToken_type();
         tokenType = tokenType.substring(0,1).toUpperCase() + tokenType.substring(1) + " ";
