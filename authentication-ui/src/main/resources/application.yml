@@ -51,3 +51,6 @@ multiple-tenant:
   weight: 2
   label-and: aa,bb
   label-or: ee
+feign:
+  hystrix:
+    enabled: true

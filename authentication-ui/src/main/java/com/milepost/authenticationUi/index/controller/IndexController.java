@@ -114,7 +114,6 @@ public class IndexController {
      * EurekaServer端的eureka.server.response-cache-update-interval-ms与
      * EurekaClient端的eureka.client.registry-fetch-interval-seconds之和
      *
-     * eurekaClient可以获取到Seata服务端，discoveryClient获取不到。
      * @return
      */
     @ResponseBody

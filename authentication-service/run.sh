@@ -12,12 +12,10 @@ start() {
     --server.port=9991 \
     --server.servlet.context-path=/authentication-service \
     --spring.application.name=authentication-service \
-    --spring.datasource.druid.url='jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8' \
-    --spring.datasource.druid.username=root \
-    --spring.datasource.druid.password=admin123 \
-    --spring.datasource.druid.one.username=root \
-    --spring.datasource.druid.one.password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)' \
-    --spring.datasource.druid.two.username=root \
+    --spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver \
+    --spring.datasource.url='jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8' \
+    --spring.datasource.username=root \
+    --spring.datasource.password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)' \
     --spring.redis.host=192.168.223.129 \
     --spring.flyway.enabled=false \
     --eureka.client.service-url.defaultZone='http://192.168.223.129:8761/eureka/' \
@@ -26,9 +24,8 @@ start() {
     --multiple-tenant.weight=3 \
     --multiple-tenant.label-and=aa,bb \
     --multiple-tenant.label-or=dd,ee,ff \
-    --dist-transaction.enabled=true \
-    --dist-transaction.tx-server-app-name=tx-server \
     --scheduler-lock.enabled=true \
+    --feign.hystrix.enabled=true \
     >/dev/null 2>&1 &
 }
 
@@ -42,12 +39,12 @@ start() {
 # export server_port=9991
 # export server_servlet_contextPath=/authentication-service
 # export spring_application_name=authentication-service
-# export spring_datasource_druid_url='jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8'
-# export spring_datasource_druid_username=root
-# export spring_datasource_druid_password=admin123
-# export spring_datasource_druid_one_username=root
-# export spring_datasource_druid_one_password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)'
-# export spring_datasource_druid_two_username=root
+# export spring_datasource_xxx_url='jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8'
+# export spring_datasource_xxx_username=root
+# export spring_datasource_xxx_password=admin123
+# export spring_datasource_xxx_one_username=root
+# export spring_datasource_xxx_one_password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)'
+# export spring_datasource_xxx_two_username=root
 # export spring_redis_host=192.168.223.129
 # export spring_flyway_enabled=true
 # export eureka_client_serviceUrl_defaultZone='http://192.168.223.129:8761/eureka/'
@@ -56,8 +53,6 @@ start() {
 # export multipleTenant_weight=3
 # export multipleTenant_labelAnd=aa,bb
 # export multipleTenant_labelOr=dd,ee,ff
-# export distTransaction_enabled=true
-# export distTransaction_txServerAppName=tx-server
 # export schedulerLock_enabled=true
 
 
