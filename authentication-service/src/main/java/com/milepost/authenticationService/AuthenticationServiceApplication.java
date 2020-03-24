@@ -1,5 +1,6 @@
 package com.milepost.authenticationService;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import com.milepost.service.MilepostServiceApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -12,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableFeignClients	//service也可能调用其他service
 @SpringBootApplication
 @EnableAspectJAutoProxy
+@EnableDistributedTransaction
 public class AuthenticationServiceApplication extends MilepostServiceApplication {
 
 	public static void main(String[] args) {
