@@ -158,6 +158,7 @@ public class LoginController {
         String clientSecret = "client_secret_" + tenant;
         String basicAuthorization = "Basic " + EncryptionUtil.encodeWithBase64(clientId + ":" + clientSecret);//Basic Auth，即 client_id + ":" + client_secret 的base64编码
         String grantType = "password";//授权方式
+        //这里可以使用OpenFeign的feign.auth.BasicAuthRequestInterceptor实现，那样会代码会更多，但可以借鉴其如何实现拦截器
         Jwt jwt = authFc.getToken(basicAuthorization, grantType, username, password);
         jwt.setBorn_time_millis(Instant.now().toEpochMilli());
         result.put("jwt", jwt);
