@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by Ruifu Hua on 2020/1/29.
  * 调用认证服务（milepost-auth）
  */
-@FeignClient("${info.app.auth-service.name}")
+@FeignClient(contextId = "authFc", name = "${info.app.auth-service.name}")
 public interface AuthFc {
 
     /**

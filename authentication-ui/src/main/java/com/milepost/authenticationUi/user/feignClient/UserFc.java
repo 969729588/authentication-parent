@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by Ruifu Hua on 2020/1/29.
  */
-@FeignClient(value = "${info.app.service.name}")
+@FeignClient(contextId = "userFc", name = "${info.app.service.name}")
 public interface UserFc {
 
     @GetMapping("${info.app.service.prefix}/user/getUserByUsernameAndPassword")
