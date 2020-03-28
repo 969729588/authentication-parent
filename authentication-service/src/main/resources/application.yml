@@ -60,9 +60,6 @@ multiple-tenant:
   weight: 9
   label-and: aa,bb
   label-or: dd,ee,ff
-feign:
-  hystrix:
-    enabled: true
 
 tx-lcn:
   client:
