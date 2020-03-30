@@ -79,8 +79,14 @@ public class LoginController {
         try {
             Map<String, Object> metadataMap = new HashMap<>();
 
+            //服务根目录
             String contextPath = environment.getProperty("server.servlet.context-path");
             metadataMap.put("contextPath", contextPath);
+            //登录 SBA Server 的用户信息
+            String loginSbaServerUser = environment.getProperty("eureka.instance.metadata-map.login_sba_server.user");
+            String loginSbaServerPassword = environment.getProperty("eureka.instance.metadata-map.login_sba_server.password");
+            metadataMap.put("loginSbaServerUser", loginSbaServerUser);
+            metadataMap.put("loginSbaServerPassword", loginSbaServerPassword);
 
             response = ResponseHelper.createSuccessResponse(metadataMap);
         }catch (Exception e){

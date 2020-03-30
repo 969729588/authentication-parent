@@ -43,27 +43,48 @@ function fillServiceInstance() {
                             var url = $(this).data('url');
                             var appType = $(this).data('appType');
 
-                            if(appType == 'UI'){
-                                //参数
-                                var paramsJsonObj = new Object();
+                            var actuatorPath = 'milepost-actuator/info';
+                            switch(appType) {
+                                case AppType.ui:
+                                    //参数
+                                    var paramsJsonObj = new Object();
 
-                                //实例元数据
-                                var metadata = {contextPath: $(this).data('contextPath')};
-                                paramsJsonObj.metadata = JSON.stringify(metadata);
+                                    //实例元数据
+                                    var metadata = {contextPath: $(this).data('contextPath')};
+                                    paramsJsonObj.metadata = JSON.stringify(metadata);
 
-                                //认证数据
-                                var authData = getAuthData();
-                                //删除没用的数据
-                                delete authData.jwt.jti;
-                                delete authData.jwt.refresh_token;
-                                delete authData.jwt.scope;
-                                delete authData.jwt.token_type;
-                                delete authData.user.password;
-                                delete authData.user.activated;
-                                paramsJsonObj.authData = JSON.stringify(authData);
-                                formSubmitWithAccessToken(paramsJsonObj, url, 'post', '_blank');
-                            }else{
-                                window.open(url);
+                                    //认证数据
+                                    var authData = getAuthData();
+                                    //删除没用的数据
+                                    delete authData.jwt.jti;
+                                    delete authData.jwt.refresh_token;
+                                    delete authData.jwt.scope;
+                                    delete authData.jwt.token_type;
+                                    delete authData.user.password;
+                                    delete authData.user.activated;
+                                    paramsJsonObj.authData = JSON.stringify(authData);
+                                    formSubmitWithAccessToken(paramsJsonObj, url, 'post', '_blank');
+                                    break;
+                                case AppType.service:
+                                    window.open(url);
+                                    break;
+                                case AppType.admin:
+                                    //参数
+                                    var paramsJsonObj = new Object();
+                                    //从认证UI的实例元数据中获取
+                                    var authUiMetadata = getMetadata();
+                                    paramsJsonObj.username=authUiMetadata.loginSbaServerUser;
+                                    paramsJsonObj.password=authUiMetadata.loginSbaServerPassword;
+                                    var adminLoginUrl = url.replace(actuatorPath, 'login');
+                                    formSubmitWithAccessToken(paramsJsonObj, adminLoginUrl, 'POST', '_blank');
+                                    break;
+                                case AppType.turbin:
+                                    //参数
+                                    var turbinHystrixUrl = url.replace(actuatorPath, 'hystrix');
+                                    window.open(turbinHystrixUrl);
+                                    break;
+                                default:
+                                    //
                             }
                         });
                     $('#serviceInstanceList').append(itemEle).append('<hr>');

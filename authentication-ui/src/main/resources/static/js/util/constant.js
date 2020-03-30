@@ -8,6 +8,16 @@ var Constant = {
     ajaxTimeout : 10000//ajax请求超时，单位ms
 };
 
+//应用类型
+var AppType = {
+    ui : "UI",
+    service : "SERVICE",
+    eureka : "EUREKA",
+    auth : "AUTH",
+    admin : "ADMIN",
+    turbin : "TURBINE"
+};
+
 //认证数据存储key
 var authDataKey = "authDataKey";
 /**
@@ -100,8 +110,10 @@ function saveMetadata(inputMetadata){
  */
 function getMetadata() {
     var metadata = {
-        "contextPath": null
-    }
+        "contextPath": null,
+        "loginSbaServerUser": null,
+        "loginSbaServerPassword": null
+    };
     var metadata = sessionStorage.getItem(metadataKey);
     if(isValid(metadata)){
         metadata = JSON.parse(metadata);
