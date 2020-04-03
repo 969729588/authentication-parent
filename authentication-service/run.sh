@@ -6,26 +6,21 @@ start() {
     nohup java -Xmx128m -Xms128m \
     -jar ${JAR_NAME} \
     --spring.profiles.active=test \
-    --info.app.name=authentication-service \
-    --info.app.description=认证-service \
-    --info.app.version=1.0.0.100 \
     --server.port=9991 \
-    --server.servlet.context-path=/authentication-service \
-    --spring.application.name=authentication-service \
     --spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver \
-    --spring.datasource.url='jdbc:mysql://localhost:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8' \
+    --spring.datasource.url='jdbc:mysql://192.168.223.136:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8' \
     --spring.datasource.username=root \
     --spring.datasource.password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)' \
-    --spring.redis.host=192.168.223.129 \
+    --spring.redis.host=192.168.223.136 \
     --spring.flyway.enabled=false \
-    --eureka.client.service-url.defaultZone='http://192.168.223.129:8761/eureka/' \
-    --eureka.instance.ip-address=192.168.223.129 \
+    --eureka.client.service-url.defaultZone='http://192.168.223.136:8761/eureka/' \
+    --eureka.instance.ip-address=192.168.223.136 \
     --multiple-tenant.tenant=tenant1 \
     --multiple-tenant.weight=3 \
     --multiple-tenant.label-and=aa,bb \
     --multiple-tenant.label-or=dd,ee,ff \
     --scheduler-lock.enabled=true \
-    --feign.hystrix.enabled=true \
+    --tx-lcn.client.manager-address=192.168.223.136:8070 \
     >/dev/null 2>&1 &
 }
 
@@ -45,15 +40,24 @@ start() {
 # export spring_datasource_xxx_one_username=root
 # export spring_datasource_xxx_one_password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)'
 # export spring_datasource_xxx_two_username=root
-# export spring_redis_host=192.168.223.129
+# export spring_redis_host=192.168.223.136
 # export spring_flyway_enabled=true
-# export eureka_client_serviceUrl_defaultZone='http://192.168.223.129:8761/eureka/'
-# export eureka_instance_ipAddress=192.168.223.129
+# export eureka_client_serviceUrl_defaultZone='http://192.168.223.136:8761/eureka/'
+# export eureka_instance_ipAddress=192.168.223.136
 # export multipleTenant_tenant=tenant1
 # export multipleTenant_weight=3
 # export multipleTenant_labelAnd=aa,bb
 # export multipleTenant_labelOr=dd,ee,ff
 # export schedulerLock_enabled=true
+
+# 环境变量操作
+# 设置
+#export TEST=abc
+# 查看
+#env | grep TEST
+# 清除
+#unset TEST
+
 
 
 stop() {

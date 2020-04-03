@@ -6,7 +6,12 @@ start() {
     nohup java -Xmx128m -Xms128m \
     -jar ${JAR_NAME} \
     --spring.profiles.active=test \
-    --eureka.instance.ip-address=192.168.223.129 \
+    --server.port=9990 \
+    --spring.redis.host=192.168.223.136 \
+    --spring.activemq.broker-url=tcp://192.168.223.136:61616 \
+    --eureka.client.service-url.defaultZone='http://192.168.223.136:8761/eureka/' \
+    --eureka.instance.ip-address=192.168.223.136 \
+    --multiple-tenant.tenant=tenant1 \
     >/dev/null 2>&1 &
 }
 

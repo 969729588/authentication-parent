@@ -21,7 +21,7 @@ spring:
     # flyway使用这个参数，多数据源不需要配置此属性，支持oracle, mysql
     platform: mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.223.129:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.223.136:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
     username: root
     password: admin123
     # 连接池属性配置见https://github.com/brettwooldridge/HikariCP，以下几个是常用的
@@ -41,7 +41,7 @@ spring:
         max-wait: 2000
     #配置redis服务器属性
     database: 1
-    host: 192.168.223.129
+    host: 192.168.223.136
     port: 6379
     #password: bomc
     #redis连接超时时间，单位毫秒
@@ -51,7 +51,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.223.129:8761/eureka/
+      defaultZone: http://192.168.223.136:8761/eureka/
   instance:
     ip-address: 192.168.223.1
 
@@ -63,4 +63,4 @@ multiple-tenant:
 
 tx-lcn:
   client:
-    manager-address: 192.168.223.129:8070
+    manager-address: 192.168.223.136:8070
