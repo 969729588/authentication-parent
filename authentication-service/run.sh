@@ -21,6 +21,8 @@ start() {
     --multiple-tenant.label-or=dd,ee,ff \
     --scheduler-lock.enabled=true \
     --tx-lcn.client.manager-address=192.168.223.136:8070 \
+    --track.enabled=true \
+    --track.sampling=1 \
     >/dev/null 2>&1 &
 }
 
