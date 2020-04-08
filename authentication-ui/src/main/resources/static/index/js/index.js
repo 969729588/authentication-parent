@@ -68,6 +68,9 @@ function fillServiceInstance() {
                                 case AppType.service:
                                     window.open(url);
                                     break;
+                                case AppType.auth:
+                                    window.open(url);
+                                    break;
                                 case AppType.admin:
                                     //参数
                                     var paramsJsonObj = new Object();
