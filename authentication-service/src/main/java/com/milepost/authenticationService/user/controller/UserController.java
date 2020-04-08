@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-
 /**
  * Created by Ruifu Hua on 2020/1/31.
  */
@@ -30,7 +28,6 @@ public class UserController {
         User user = null;
         try {
             user = userService.getUserByUsernameAndPassword(username, password);
-            System.out.println(new Date());
         }catch (Exception e){
             logger.error(e.getMessage(), e);
         }

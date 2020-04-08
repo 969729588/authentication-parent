@@ -5,9 +5,6 @@ info:
     version: 1.0.0.100
 
 server:
-#  port: 9994
-#  port: 9993
-#  port: 9992
   port: 9991
   servlet:
     context-path: "/authentication-service"
@@ -45,36 +42,25 @@ spring:
     database: 1
     host: 192.168.223.136
     port: 6379
-    #password: bomc
-    #redis连接超时时间，单位毫秒
+    #password: test
     timeout: 2000
-  activemq:
-    broker-url: tcp://192.168.223.136:61616
   rabbitmq:
-    #rabbitmq服务器ip
     host: 192.168.223.136
-    #rabbitmq端口
     port: 5672
-    #rabbitmq用户
     username: admin
-    #rabbitmq密码
     password: admin
 track:
-  enabled: true
   sampling: 1
 
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.223.1:8761/eureka/
+      defaultZone: http://192.168.223.136:8761/eureka/
   instance:
     ip-address: 192.168.223.1
 
 multiple-tenant:
   tenant: tenant1
-  weight: 9
-  label-and: aa,bb
-  label-or: dd,ee,ff
 
 tx-lcn:
   client:

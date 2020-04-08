@@ -6,27 +6,8 @@ start() {
     nohup java -Xmx128m -Xms128m \
     -jar ${JAR_NAME} \
     --spring.profiles.active=test \
-    --server.port=9991 \
     --eureka.client.service-url.defaultZone='http://192.168.223.136:8761/eureka/' \
     --eureka.instance.ip-address=192.168.223.136 \
-    --spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver \
-    --spring.datasource.url='jdbc:mysql://192.168.223.136:3306/milepost_auth?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8' \
-    --spring.datasource.username=root \
-    --spring.datasource.password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)' \
-    --spring.redis.host=192.168.223.136 \
-    --spring.flyway.enabled=false \
-    --spring.rabbitmq.host=192.168.223.136 \
-    --spring.rabbitmq.port=5672 \
-    --spring.rabbitmq.username=admin \
-    --spring.rabbitmq.password=admin \
-    --track.enabled=true \
-    --track.sampling=1 \
-    --multiple-tenant.tenant=tenant1 \
-    --multiple-tenant.weight=3 \
-    --multiple-tenant.label-and=aa,bb \
-    --multiple-tenant.label-or=dd,ee,ff \
-    --scheduler-lock.enabled=true \
-    --tx-lcn.client.manager-address=192.168.223.136:8070 \
     >/dev/null 2>&1 &
 }
 
@@ -63,7 +44,6 @@ start() {
 #env | grep TEST
 # 清除
 #unset TEST
-
 
 
 stop() {

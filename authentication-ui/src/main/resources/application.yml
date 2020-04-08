@@ -30,11 +30,9 @@ spring:
     database: 1
     host: 192.168.223.136
     port: 6379
-    #password: bomc
+    #password: test
     #redis连接超时时间，单位毫秒
     timeout: 2000
-  activemq:
-    broker-url: tcp://192.168.223.136:61616
   rabbitmq:
     #rabbitmq服务器ip
     host: 192.168.223.136
@@ -45,22 +43,17 @@ spring:
     #rabbitmq密码
     password: admin
 track:
-  enabled: true
   sampling: 1
 
 eureka:
   client:
     service-url:
       #defaultZone: http://192.168.1.105:8761/eureka/
-      defaultZone: http://192.168.223.1:8761/eureka/
+      defaultZone: http://192.168.223.136:8761/eureka/
   instance:
     ip-address: 192.168.223.1
-
 
 #多租户相关
 multiple-tenant:
   tenant: tenant1
-  weight: 2
-  label-and: aa,bb
-  label-or: ee
 
