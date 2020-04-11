@@ -31,7 +31,7 @@ $.ajaxSetup({
         }
         console.log(errorMsg);
         alert(errorMsg);//之后要换成bootstrap弹窗
-
+        $("#mask").hide();
         // switch (jqXHR.status) {
         //     case (500):
         //         alert('['+ jqXHR.status +']服务器系统内部错误');

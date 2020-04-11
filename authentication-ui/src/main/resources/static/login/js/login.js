@@ -39,8 +39,8 @@ function login() {
         url: getContextPath() + '/login/doLogin',
         data: {
             'username': username,
-            'password': password/*,
-            'imgCheckCode': imgCheckCode*/
+            'password': password,
+            'imgCheckCode': imgCheckCode
         },
         success: function (data) {
             if (data.code == Constant.returnSuccess) {
