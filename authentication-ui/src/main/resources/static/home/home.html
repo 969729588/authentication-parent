@@ -1,37 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <link rel="icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <!--使用高速模式（即 webkit 内核）渲染，国产浏览器默认是兼容模式（即 IE 内核），目前只有360浏览器支持此 <meta> 标签-->
+    <meta name="renderer" content="webkit">
+
+    <!--icon-->
+    <link rel="icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon-icon/favicon_16.ico" type="image/x-icon"/>
+
     <title>Milepost</title>
 
-    <link rel="stylesheet" href="home/css/home.css"/>
+    <!---------------------------------bootstrap begin--------------------------------->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!--jquery-->
-    <script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
-    <!--util-->
-    <script type="text/javascript" src="js/util/constant.js"></script>
-    <script type="text/javascript" src="js/util/base64.js"></script>
-    <script type="text/javascript" src="js/util/commonUtil.js"></script>
-    <script type="text/javascript" src="js/util/ajaxUtil.js"></script>
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="bootstrap/js/html5shiv.min.js"></script>
+    <script src="bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+    <!---------------------------------bootstrap end--------------------------------->
 
-    <!--page-->
-    <script type="text/javascript" src="home/js/home.js"></script>
+    <!---------------------------------customer css begin--------------------------------->
+    <link href="home/css/dashboard.css" rel="stylesheet">
+    <link href="home/css/home.css" rel="stylesheet" />
+    <!---------------------------------customer css end--------------------------------->
 </head>
 <body>
-<div>
-    <h3>这是认证UI首页，这是部分功能还没完成呢，这个页面是临时的，证明了核心逻辑能走通。</h3>
-    <h3>架的后端首页，包括导航，左侧菜单，底部版权，中间内容框</h3>
+<!---------------------------------content begin--------------------------------->
+<!--<h3>这是认证UI首页，这是部分功能还没完成呢，这个页面是临时的，证明了核心逻辑能走通。</h3>
+<h3>架的后端首页，包括导航，左侧菜单，底部版权，中间内容框</h3>
 
-    <button onclick="printData()">打印认证数据、实例元数据</button><br><br>
-    <button onclick="reloadIndex()">重新加载首页</button><br><br>
+<button onclick="printData()">打印认证数据、实例元数据</button><br><br>
+<button onclick="reloadIndex()">重新加载首页</button><br><br>
 
-    <div class="content-frame">
+<div class="content-frame">
+</div>-->
+
+<!--导航-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-a" href="javascript:void(0);">Milepost认证</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="navbar-a logout" href="javascript:void(0);">登出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--导航下方的所有内容-->
+<div class="container-fluid">
+    <div class="row">
+        <!--左侧菜单-->
+        <div class="col-sm-3 col-md-2 sidebar leftMenu">
+            <ul class="nav nav-sidebar">
+                <!--<li class="active"><a href="loadContent();">服务实例</a></li>
+                <li><a href="javascript:void(0);">用户</a></li>-->
+            </ul>
+        </div>
+
+        <!--右侧content-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            fds<br> fds<br> fds<br>
+        </div>
     </div>
 </div>
+
+<!---------------------------------content end--------------------------------->
+
+
+<!---------------------------------bootstrap begin--------------------------------->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<!--<script type="text/javascript" src="js/jquery-1.11.3/jquery.min.js"></script>-->
+<script src="js/jquery-1.12.4/jquery-1.12.4.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<!-----------------------------------bootstrap end--------------------------------->
+
+<!-----------------------------------customer js begin--------------------------------->
+<!--util-->
+<script src="js/util/constant.js"></script>
+<script src="js/util/base64.js"></script>
+<script src="js/util/commonUtil.js"></script>
+<script src="js/util/ajaxUtil.js"></script>
+<!--page-->
+<script src="home/js/home.js"></script>
+<!-----------------------------------customer js end--------------------------------->
+
 </body>
 </html>

@@ -19,16 +19,73 @@ function printData() {
     console.log(getContextPath());
 }
 
-function reloadIndex() {
-    //Accept: text/html, */*; q=0.01
-    //Content-Type: text/html
-    $('.content-frame').load(getContextPath() + '/index/index.html',function () {
-        console.log('加载页面完成事件');
-    });
-}
 
 $(function () {
-    //显示首页内容
-    $('.content-frame').load(getContextPath() + '/index/index.html');
+    //初始化左侧菜单
+    initLeftMenu();
+
+    //默认显示左侧菜单中的第一个
+    $('.leftMenu ul').children(":first").click();
+
+    //登出
+    logout();
 });
+
+/**
+ * 初始化左侧菜单
+ */
+function initLeftMenu() {
+    //菜单数据
+    var data = [
+        {"id":"1", "name":"服务实例", "url":"/instance/instance.html"}/*,
+        {"id":"2", "name":"用户", "url":"/user/user.html"}*/
+    ];
+
+    for(var i in data){
+        var item = data[i];
+        var $li = $('<li><a href="javascript:void(0);">'+ item.name +'</a></li>');
+        $li.data('id', item.id);
+        $li.data('url', item.url);
+        $li.click(function () {
+            //点击选中菜单
+            $('.leftMenu').find('li').removeClass('active');
+            $(this).addClass('active');
+            
+            //加载页面
+            var url = $(this).data('url');
+            loadMain(url);
+        });
+
+        //添加元素
+        $('.leftMenu').find('ul').append($li);
+    }
+}
+
+/**
+ * 加载右侧内容
+ * @param url
+ * @param paramObj json参数
+ */
+function loadMain(url, paramObj) {
+    if(isValid(paramObj)){
+        $('.main').load(getContextPath() + url, paramObj);
+    }else{
+        $('.main').load(getContextPath() + url);
+    }
+}
+
+/**
+ * 登出
+ */
+function logout() {
+    $('.logout').click(function () {
+        //获取contextPath
+        var contextPath = getContextPath();
+        //清空数据
+        sessionStorage.removeItem(metadataKey);
+        sessionStorage.removeItem(authDataKey);
+        //跳转到登录页
+        window.location.href = contextPath + '/login';
+    });
+}
 

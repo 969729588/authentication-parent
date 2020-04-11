@@ -5,7 +5,7 @@
 
 var Constant = {
     returnSuccess : 0,//请求接口返回的code如果是0，表示成功，
-    ajaxTimeout : 10000//ajax请求超时，单位ms
+    ajaxTimeout : 15000//ajax请求超时，单位ms，比Ribbon超时时间多5s
 };
 
 //应用类型
