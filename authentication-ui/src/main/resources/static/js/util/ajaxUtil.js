@@ -29,8 +29,8 @@ $.ajaxSetup({
         if(isValid(jqXHR.responseJSON)){
             errorMsg = errorMsg + 'error=' + jqXHR.responseJSON.error + "；" + 'error_description=' + jqXHR.responseJSON.error_description + "；";
         }
-        console.log(errorMsg);
-        alert(errorMsg);//之后要换成bootstrap弹窗
+        //console.log(errorMsg);
+        error(errorMsg);//之后要换成bootstrap弹窗
         $("#mask").hide();
         // switch (jqXHR.status) {
         //     case (500):

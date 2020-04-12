@@ -28,24 +28,49 @@ function fillServiceInstance() {
                 for(var i=0; i<data.payload.length; i++){
                     var item = data.payload[i];
                     var color = colorArray[i%5];
-                    var $div = $('  <div class="col-md-6">' +
-                                 '      <div class="panel '+ color +'">' +
-                                 '          <div class="panel-heading">' +
-                                 '              <h3 class="panel-title">'+ item.name +'</h3>' +
-                                 '          </div>' +
-                                 '          <div class="panel-body">' +
-                                 '              <p>服务名称：<a href="javascript:void(0);" class="serverName">'+ item.name +'（'+ item.appName +'）</a></p>' +
-                                 '              <p>服务类型：'+  item.appType +'</p>' +
-                                 '              <p>版本：'+ item.version +'</p>' +
-                                 '              <p>描述：'+ item.description +'</p>' +
-                                 '              <p>实例ID：'+ item.instanceId +'</p>' +
-                                 '              <p>租户：'+ item.tenant +'</p>' +
-                                 '              <p>权重：'+ item.weight +'</p>' +
-                                 '              <p>或标签：'+ item.labelOr +'</p>' +
-                                 '              <p>与标签：'+ item.labelAnd +'</p>' +
-                                 '          </div>' +
-                                 '      </div>' +
-                                 '  </div>');
+                    var $div = null;
+                    if(item.appType=='ADMIN' || item.appType=='TURBINE'){
+                        $div = $('  <div class="col-md-6">' +
+                            '      <div class="panel '+ color +'">' +
+                            '          <div class="panel-heading">' +
+                            '              <h3 class="panel-title">'+ item.name +'</h3>' +
+                            '          </div>' +
+                            '          <div class="panel-body">' +
+                            '              <p>服务名称：<a href="javascript:void(0);" class="serverName">'+ item.name +'（'+ item.appName +'）</a></p>' +
+                            '              <p>服务类型：'+  item.appType +'</p>' +
+                            '              <p>版本：'+ item.version +'</p>' +
+                            '              <p>描述：'+ item.description +'</p>' +
+                            '              <p>实例ID：'+ item.instanceId +'</p>' +
+                            '              <p>租户：'+ item.tenant +'</p>' +
+                            '              <p>权重：-</p>' +
+                            '              <p>或标签：-</p>' +
+                            '              <p>与标签：-</p>' +
+                            '              <p>跟踪采样率：'+ item.trackSampling +'</p>' +
+                            '          </div>' +
+                            '      </div>' +
+                            '  </div>');
+                    }else{
+                        $div = $('  <div class="col-md-6">' +
+                            '      <div class="panel '+ color +'">' +
+                            '          <div class="panel-heading">' +
+                            '              <h3 class="panel-title">'+ item.name +'</h3>' +
+                            '          </div>' +
+                            '          <div class="panel-body">' +
+                            '              <p>服务名称：<a href="javascript:void(0);" class="serverName">'+ item.name +'（'+ item.appName +'）</a></p>' +
+                            '              <p>服务类型：'+  item.appType +'</p>' +
+                            '              <p>版本：'+ item.version +'</p>' +
+                            '              <p>描述：'+ item.description +'</p>' +
+                            '              <p>实例ID：'+ item.instanceId +'</p>' +
+                            '              <p>租户：'+ item.tenant +'</p>' +
+                            '              <p>权重：'+ item.weight +'</p>' +
+                            '              <p>或标签：'+ item.labelOr +'</p>' +
+                            '              <p>与标签：'+ item.labelAnd +'</p>' +
+                            '              <p>跟踪采样率：'+ item.trackSampling +'</p>' +
+                            '          </div>' +
+                            '      </div>' +
+                            '  </div>');
+                    }
+
                     $div.find('.serverName').data({
                         url:item.url,
                         contextPath:item.contextPath,
@@ -93,10 +118,10 @@ function fillServiceInstance() {
                                 var adminLoginUrl = url.replace(actuatorPath, 'login');
                                 formSubmitWithAccessToken(paramsJsonObj, adminLoginUrl, 'POST', '_blank');
                                 break;
-                            case AppType.turbin:
+                            case AppType.turbine:
                                 //参数
-                                var turbinHystrixUrl = url.replace(actuatorPath, 'hystrix');
-                                window.open(turbinHystrixUrl);
+                                var turbineHystrixUrl = url.replace(actuatorPath, 'hystrix');
+                                window.open(turbineHystrixUrl);
                                 break;
                             default:
                         }

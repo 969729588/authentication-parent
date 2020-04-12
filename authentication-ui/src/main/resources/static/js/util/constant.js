@@ -15,7 +15,7 @@ var AppType = {
     eureka : "EUREKA",
     auth : "AUTH",
     admin : "ADMIN",
-    turbin : "TURBINE"
+    turbine : "TURBINE"
 };
 
 //认证数据存储key

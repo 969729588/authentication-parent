@@ -154,21 +154,18 @@ public class IndexController {
                         }
                         map.put("contextPath", metadata.get("context-path"));//服务context-path
                         map.put("tenant", thisTenant);//租户
-                        if(metadata.containsKey("weight")){
-                            map.put("weight", metadata.get("weight"));//权重
-                        }else{
-                            map.put("weight", "-");//权重
-                        }
+                        map.put("weight", metadata.get("weight"));//权重
                         if(metadata.containsKey("label-or")){
                             map.put("labelOr", metadata.get("label-or"));//或标签
                         }else{
-                            map.put("labelOr", "-");//或标签
+                            map.put("labelOr", "未设置");//或标签
                         }
                         if(metadata.containsKey("label-and")){
                             map.put("labelAnd", metadata.get("label-and"));//与标签
                         }else{
-                            map.put("labelAnd", "-");//与标签
+                            map.put("labelAnd", "未设置");//与标签
                         }
+                        map.put("trackSampling", metadata.get("track-sampling"));//跟踪采样率
 
                         instanceInfoList.add(map);
                     }
