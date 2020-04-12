@@ -1,0 +1,8 @@
+.alert-center {
+    position: fixed;
+    width: 400px;
+    top: 55px;
+    left: 50%;
+    /*margin-top: -25px;*/
+    margin-left: -200px;
+}
