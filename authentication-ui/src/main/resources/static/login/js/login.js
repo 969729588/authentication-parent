@@ -18,17 +18,17 @@ $(function () {
 function login() {
     var username = $(':input[name="username"]').val();
     if(!isValid(username)){
-        alert('请填写用户名');
+        printErrorMsg('请填写用户名');
         return;
     }
     var password = $(':input[name="password"]').val();
     if(!isValid(password)){
-        alert('请填写密码');
+        printErrorMsg('请填写密码');
         return;
     }
     var imgCheckCode = $(':input[name="imgCheckCode"]').val();
     if(!isValid(imgCheckCode)){
-        alert('请填写验证码');
+        printErrorMsg('请填写验证码');
         return;
     }
 
@@ -40,8 +40,8 @@ function login() {
         url: getContextPath() + '/login/doLogin',
         data: {
             'username': username,
-            'password': password/*,
-            'imgCheckCode': imgCheckCode*/
+            'password': password,
+            'imgCheckCode': imgCheckCode
         },
         success: function (data) {
             if (data.code == Constant.returnSuccess) {
@@ -72,19 +72,19 @@ function login() {
             $("#mask").hide();
             // switch (jqXHR.status) {
             //     case (500):
-            //         alert('['+ jqXHR.status +']服务器系统内部错误');
+            //         printErrorMsg('['+ jqXHR.status +']服务器系统内部错误');
             //         break;
             //     case (401):
-            //         alert('['+ jqXHR.status +']未登录');
+            //         printErrorMsg('['+ jqXHR.status +']未登录');
             //         break;
             //     case (403):
-            //         alert('['+ jqXHR.status +']无权限执行此操作');
+            //         printErrorMsg('['+ jqXHR.status +']无权限执行此操作');
             //         break;
             //     case (408):
-            //         alert('['+ jqXHR.status +']请求超时');
+            //         printErrorMsg('['+ jqXHR.status +']请求超时');
             //         break;
             //     default:
-            //         alert('['+ jqXHR.status +']未知错误，请联系管理员');
+            //         printErrorMsg('['+ jqXHR.status +']未知错误，请联系管理员');
             // }
         }
     });
