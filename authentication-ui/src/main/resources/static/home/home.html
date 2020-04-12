@@ -35,20 +35,12 @@
 
     <!---------------------------------customer css begin--------------------------------->
     <link href="home/css/dashboard.css" rel="stylesheet">
+    <link href="home/css/alertUtil.css" rel="stylesheet">
     <link href="home/css/home.css" rel="stylesheet" />
     <!---------------------------------customer css end--------------------------------->
 </head>
 <body>
 <!---------------------------------content begin--------------------------------->
-<!--<h3>这是认证UI首页，这是部分功能还没完成呢，这个页面是临时的，证明了核心逻辑能走通。</h3>
-<h3>架的后端首页，包括导航，左侧菜单，底部版权，中间内容框</h3>
-
-<button onclick="printData()">打印认证数据、实例元数据</button><br><br>
-<button onclick="reloadIndex()">重新加载首页</button><br><br>
-
-<div class="content-frame">
-</div>-->
-
 <!--导航-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -57,6 +49,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a class="navbar-a">当前租户：<span class="tenant"></span></a></li>
                 <li><a class="navbar-a logout" href="javascript:void(0);">登出</a></li>
             </ul>
         </div>
@@ -82,6 +75,22 @@
     </div>
 </div>
 
+<!--测试alert-->
+<!--<div style="margin-left: 300px; margin-bottom: 50px">
+    <button onclick="info('test into<br>换行');">info，默认停留3s</button>&nbsp;
+    <button onclick="info('test into<br>换行', 1);">info，指定停留1s</button>&nbsp;
+    <button onclick="info('test into<br>换行', 0);">info，永远停留，不会自动关闭</button>&nbsp;
+    <br>
+    <button onclick="success('test success<br>换行');">success，默认停留3s</button>&nbsp;
+    <button onclick="success('test success<br>换行', 1);">success，指定停留1s</button>&nbsp;
+    <button onclick="success('test success<br>换行', 0);">success，永远停留，不会自动关闭</button>&nbsp;
+    <br>
+    <button onclick="warn('test warn<br>换行');">warn，默认永远停留</button>&nbsp;
+    <button onclick="warn('test warn<br>换行', 1);">warn，指定停留1s</button>&nbsp;
+    <br>
+    <button onclick="error('test error<br>换行');">error，默认永远停留</button>&nbsp;
+    <button onclick="error('test error<br>换行', 1);">error，指定停留1s</button>&nbsp;
+</div>-->
 <!---------------------------------content end--------------------------------->
 
 
@@ -101,6 +110,7 @@
 <script src="js/util/base64.js"></script>
 <script src="js/util/commonUtil.js"></script>
 <script src="js/util/ajaxUtil.js"></script>
+<script src="js/util/alertUtil.js"></script>
 <!--page-->
 <script src="home/js/home.js"></script>
 <!-----------------------------------customer js end--------------------------------->

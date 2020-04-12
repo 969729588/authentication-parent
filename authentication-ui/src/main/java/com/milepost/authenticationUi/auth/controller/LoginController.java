@@ -82,6 +82,11 @@ public class LoginController {
             //服务根目录
             String contextPath = environment.getProperty("server.servlet.context-path");
             metadataMap.put("contextPath", contextPath);
+
+            //当前租户
+            String tenant = multipleTenantProperties.getTenant();
+            metadataMap.put("tenant", tenant);
+
             //登录 SBA Server 的用户信息
             String loginSbaServerUser = environment.getProperty("eureka.instance.metadata-map.login_sba_server.user");
             String loginSbaServerPassword = environment.getProperty("eureka.instance.metadata-map.login_sba_server.password");

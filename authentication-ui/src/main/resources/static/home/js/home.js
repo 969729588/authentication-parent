@@ -27,6 +27,9 @@ $(function () {
     //默认显示左侧菜单中的第一个
     $('.leftMenu ul').children(":first").click();
 
+    //显示当前租户
+    tenant();
+
     //登出
     logout();
 });
@@ -89,3 +92,10 @@ function logout() {
     });
 }
 
+/**
+ * 显示当前租户
+ */
+function tenant() {
+    var metadata = getMetadata();
+    $('.tenant').text(metadata.tenant);
+}

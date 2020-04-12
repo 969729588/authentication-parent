@@ -154,6 +154,21 @@ public class IndexController {
                         }
                         map.put("contextPath", metadata.get("context-path"));//服务context-path
                         map.put("tenant", thisTenant);//租户
+                        if(metadata.containsKey("weight")){
+                            map.put("weight", metadata.get("weight"));//权重
+                        }else{
+                            map.put("weight", "-");//权重
+                        }
+                        if(metadata.containsKey("label-or")){
+                            map.put("labelOr", metadata.get("label-or"));//或标签
+                        }else{
+                            map.put("labelOr", "-");//或标签
+                        }
+                        if(metadata.containsKey("label-and")){
+                            map.put("labelAnd", metadata.get("label-and"));//与标签
+                        }else{
+                            map.put("labelAnd", "-");//与标签
+                        }
 
                         instanceInfoList.add(map);
                     }
@@ -162,7 +177,7 @@ public class IndexController {
             response = ResponseHelper.createSuccessResponse(instanceInfoList);
         }catch (Exception e){
             logger.error(e.getMessage(), e);
-            response = ResponseHelper.createFailResponse();
+            response = ResponseHelper.createExceptionResponse(e);
         }
         return response;
     }

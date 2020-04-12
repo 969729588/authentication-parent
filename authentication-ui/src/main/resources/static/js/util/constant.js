@@ -111,6 +111,7 @@ function saveMetadata(inputMetadata){
 function getMetadata() {
     var metadata = {
         "contextPath": null,
+        "tenant":null,
         "loginSbaServerUser": null,
         "loginSbaServerPassword": null
     };
