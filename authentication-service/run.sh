@@ -6,8 +6,8 @@ start() {
     nohup java -Xmx64m -Xms32m \
     -jar ${JAR_NAME} \
     --spring.profiles.active=test \
-    --eureka.client.service-url.defaultZone='http://192.168.223.136:8761/eureka/' \
-    --eureka.instance.ip-address=192.168.223.136 \
+    --eureka.client.service-url.defaultZone='http://192.168.186.131:8761/eureka/' \
+    --eureka.instance.ip-address=192.168.186.131 \
     >/dev/null 2>&1 &
 }
 
@@ -27,10 +27,10 @@ start() {
 # export spring_datasource_xxx_one_username=root
 # export spring_datasource_xxx_one_password='ENC(tXVsX2fiUQfrNM9Gqey3pmRiLgw+Znp/ISEaZCOMDo0=)'
 # export spring_datasource_xxx_two_username=root
-# export spring_redis_host=192.168.223.136
+# export spring_redis_host=192.168.186.131
 # export spring_flyway_enabled=true
-# export eureka_client_serviceUrl_defaultZone='http://192.168.223.136:8761/eureka/'
-# export eureka_instance_ipAddress=192.168.223.136
+# export eureka_client_serviceUrl_defaultZone='http://192.168.186.131:8761/eureka/'
+# export eureka_instance_ipAddress=192.168.186.131
 # export multipleTenant_tenant=tenant1
 # export multipleTenant_weight=3
 # export multipleTenant_labelAnd=aa,bb

@@ -18,10 +18,10 @@ function fillServiceInstance() {
              name: "业务系统例子服务UI"
              description: "用来做相关例子的"
              appName: "EXAMPLE-UI"
-             instanceId: "192.168.223.1:tenant1:example-ui:9980"
+             instanceId: "192.168.186.5:tenant1:example-ui:9980"
              milepost-type: "UI"
              tenant: "tenant1"
-             url: "http://192.168.223.1:9980/example-ui/index"
+             url: "http://192.168.186.5:9980/example-ui/index"
              version: "1.0.0.100"
              */
             if (data.code == Constant.returnSuccess) {
