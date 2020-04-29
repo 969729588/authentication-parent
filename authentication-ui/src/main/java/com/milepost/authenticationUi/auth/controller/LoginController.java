@@ -126,6 +126,8 @@ public class LoginController {
                     response = ResponseHelper.createFailResponse();
                     response.setMsg("验证码错误");
                 }
+                //清空验证码，以防同一个验证码被使用多次。
+                session.removeAttribute(IMG_CHECK_CODE);
             }else{
                 //忽略验证码
                 response = login(username, password);
