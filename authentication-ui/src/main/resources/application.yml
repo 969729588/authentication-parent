@@ -8,6 +8,7 @@ info:
       name: authentication-service
       #就是service的server.servlet.context-path
       prefix: "/authentication-service"
+
 server:
   port: 9990
   servlet:
